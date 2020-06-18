@@ -1,0 +1,13 @@
+is bald
+is a heap
+is tall 
+is short 
+is young 
+is old
+is a child
+is an adult 
+is <color> 
+is sunny
+is cloudy
+is high
+is low 

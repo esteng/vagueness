@@ -1,0 +1,32 @@
+# TODO
+
+## Housekeeping and setup
+- filling out paperwork 
+    - I-9 form 
+- get set up on CLSP grid [here](intro.html)
+	- understand difference between a login node and worker node 
+	- understand what kind of hardware is available 
+- learn [how to submit jobs](qsub.html)
+	- understand role of a submission script 
+	- understand general do's/don'ts of submitting jobs
+	- understand how to submit an interactive job
+- set up a virtualenv using conda or virtualenv 
+	- python version 3.7 or 3.6
+- submit a practice job 
+	- make a python file called "example.py" that prints out the system information (system name, node name, machine, processor) (see [here](https://www.thepythoncode.com/article/get-hardware-system-information-python))
+	- run the script once on the login node 
+	- run the script in an interactive job 
+	- run the script from inside a submitted bash script 
+
+## Vagueness project 
+- download VQA dataset [here](https://visualqa.org)
+	- don't download the images just yet, just the questions/captions 
+- construct regular expressions for the predicates listed in list_of_canonical_preds.txt file  	
+	- these regexs should capture most forms of the predicate 
+	- for example, it should capture "an old man", "the woman is old", "Old people" but not "oldsmobile" or "I told you so" 
+	- the <color> predicate should be expanded to match all common colors (e.g. red, blue, etc., periwinkle and chartreuse type colors can be excluded) 
+	- try to construct a general regex template that you can then automatically fill with the predicate, rather than hardcoding the template for each predicate
+- Use the regexs to search over the image captions and questions in order to find examples like what's already in the VQA folder
+	- the output of this search should have the predicate, the image id, the caption/question string, and the dataset label
+
+	

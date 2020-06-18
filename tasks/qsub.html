@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>A gentle introduction to SGE and qsub - CLSP Wiki</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"A_gentle_introduction_to_SGE_and_qsub","wgTitle":"A gentle introduction to SGE and qsub","wgCurRevisionId":9245,"wgRevisionId":9245,"wgArticleId":1966,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":"Elias","wgUserGroups":["*","user","autoconfirmed"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"A_gentle_introduction_to_SGE_and_qsub","wgRelevantArticleId":1966,"wgRequestId":"XuunQdg7qZDDH3hx7xgXhwAAAAQ","wgUserId":644,"wgUserEditCount":0,"wgUserRegistration":1583503327000,"wgUserNewMsgRevisionId":null,"wgIsProbablyEditable":true,"wgRelevantPageIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgRedirectedFrom":"A_gentle_introduction_to_sge_and_qsub","wgInternalRedirectTargetUrl":"/index.php/A_gentle_introduction_to_SGE_and_qsub"});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","site":"ready","user.options":"ready","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","mediawiki.skinning.interface":"ready","skins.vector.styles":"ready"});mw.loader.implement("user.tokens@1khlv1w",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"editToken":"36ff9144e81defc598cbca46e8e1238d5eeba741+\\","patrolToken":"84f07715ef12b5bd9b1d74d223243e745eeba741+\\","watchToken":"1b45ceb159398636eb2f3e042265be3b5eeba741+\\","csrfToken":"36ff9144e81defc598cbca46e8e1238d5eeba741+\\"});
+});mw.loader.load(["mediawiki.action.view.redirect","mediawiki.page.startup","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.toc","mediawiki.searchSuggest","mediawiki.page.watch.ajax","skins.vector.js"]);});</script>
+<link rel="stylesheet" href="/load.php?debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.interface%7Cskins.vector.styles&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<meta name="generator" content="MediaWiki 1.31.3"/>
+<link rel="alternate" type="application/x-wiki" title="Edit" href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;action=edit"/>
+<link rel="edit" title="Edit" href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;action=edit"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch_desc.php" title="CLSP Wiki (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://wiki.clsp.jhu.edu/api.php?action=rsd"/>
+<link rel="alternate" type="application/atom+xml" title="CLSP Wiki Atom feed" href="/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+<link rel="canonical" href="http://wiki.clsp.jhu.edu/index.php/A_gentle_introduction_to_SGE_and_qsub"/>
+<!--[if lt IE 9]><script src="/load.php?debug=false&amp;lang=en&amp;modules=html5shiv&amp;only=scripts&amp;skin=vector&amp;sync=1"></script><![endif]-->
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-A_gentle_introduction_to_SGE_and_qsub rootpage-A_gentle_introduction_to_SGE_and_qsub skin-vector action-view">		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+			<div class="mw-indicators mw-body-content">
+</div>
+<h1 id="firstHeading" class="firstHeading" lang="en">A gentle introduction to SGE and qsub</h1>			<div id="bodyContent" class="mw-body-content">
+				<div id="siteSub" class="noprint">From CLSP Wiki</div>				<div id="contentSub"><span class="mw-redirectedfrom">(Redirected from <a href="/index.php?title=A_gentle_introduction_to_sge_and_qsub&amp;redirect=no" class="mw-redirect" title="A gentle introduction to sge and qsub">A gentle introduction to sge and qsub</a>)</span></div>
+								<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-head">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="mw-parser-output"><p>Qsub isn't as scary as it sounds!
+</p><p><code>qsub</code> is a tool for submitting a batch job to Sun Grid Engine, i.e. our grid at CLSP.
+This allows you to run several jobs in the background with specific resources allocated.
+Here, we provide a brief template for how to create, monitor, and delete jobs that you can submit to the grid.
+</p>
+<div id="toc" class="toc"><div class="toctitle" lang="en" dir="ltr"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Example_usage"><span class="tocnumber">2</span> <span class="toctext">Example usage</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Useful_flags"><span class="tocnumber">2.1</span> <span class="toctext">Useful flags</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Submitting_a_job_via_bash_file"><span class="tocnumber">2.2</span> <span class="toctext">Submitting a job via bash file</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Submitting_a_job_via_command_line"><span class="tocnumber">2.3</span> <span class="toctext">Submitting a job via command line</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Monitoring_a_job"><span class="tocnumber">2.4</span> <span class="toctext">Monitoring a job</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Deleting_a_job"><span class="tocnumber">2.5</span> <span class="toctext">Deleting a job</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Finding_the_output_of_your_job"><span class="tocnumber">2.6</span> <span class="toctext">Finding the output of your job</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="#Another_example"><span class="tocnumber">3</span> <span class="toctext">Another example</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#Utilities"><span class="tocnumber">4</span> <span class="toctext">Utilities</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction">Introduction</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;action=edit&amp;section=1" title="Edit section: Introduction">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>To run any compute-intensive (CPU or GPU intensive) tasks, including parallel jobs, use <code>qsub</code>. This is part of Sun GridEngine (SGE).
+</p><p>In this and following sections we briefly demonstrate usage of qsub and other SGE tools on the grid.  For more information, see tutorials online, for example:
+</p>
+<ol><li><a rel="nofollow" class="external text" href="http://www.uibk.ac.at/zid/systeme/hpc-systeme/common/tutorials/sge-howto.html">A general tutorial</a></li>
+<li><a rel="nofollow" class="external text" href="http://gridscheduler.sourceforge.net/htmlman/manuals.html">the man page</a></li></ol>
+<p>The main difference between our grid and others is that if you want to specify memory resources, you should do so with something like:
+</p>
+<pre> qsub -l mem_free=10G,ram_free=10G my_job.sh
+</pre>
+<p>If your jobs use 1G of memory or less you don't need to do this.
+We do not use special queues, only the queue "all.q" which is the default so you don't need to specify the queue.  GridEngine as we have configured it will ignore the hashbang e.g. <code>#!/bin/csh</code> at the top of your script.  The default is /bin/bash and if you want to change this you need the -S option, e.g. -S /bin/csh.  The normal procedure, though, is to simply have a bash script that calls whatever interpreter you really need (e.g. python or matlab).
+</p><p>The job you submit needs to be a shell script, which can't take command-line arguments; if you want to call Python or Matlab or something, do it from the shell script.
+</p><p>If you want to submit a job with multiple threads, you should use the -pe smp N option, e.g.
+</p>
+<pre>qsub -l 'arch=*64*' -pe smp 5 foo.sh
+</pre>
+<p>for a job that requires 5 threads (or 5 parallel single-threaded processes.. it's the number of processors that is being allocated here).   Note that the ram_free option is now configured to be per-job, so if a 5-thread job takes 5G, you would specify -l mem_free=5G,ram_free=5G.
+</p><p>You can set up dependencies between your jobs using the -hold_jid option to qsub, for example,
+</p>
+<pre>qsub -hold_jid 19841,19842 foo.sh
+</pre>
+<p>won't run foo.sh until jobs 19841 and 19842 are done.  You can limit how many of your jobs run at one time to, say, 10, by giving the option "-tc 10".
+This can be useful for jobs that run for a very long time or use a lot of I/O.
+</p><p>For jobs that do a lot of I/O, it can be helpful to have them run on the same machine as the data is located, e.g. if your data is on a11 it might be helpful to use the option:
+</p>
+<pre>  -l "hostname=a11*"
+</pre>
+<p>To tell qsub to only use b01 through b09 or b11 through b13:
+</p>
+<pre>  -l "hostname=b0[123456789]*|b1[123]*"
+</pre>
+<p>To exclude h01 or y01:
+</p>
+<pre>  -l 'hostname=![hy]*'
+</pre>
+<p>To use any b machine except b01:
+</p>
+<pre>  -l 'hostname=!b01*&amp;b*'
+</pre>
+<p>(Note single quotes are needed if you use the exclamation mark.)
+</p><p>Usually when things are slow it's because some disk that you're using is slow, usually because someone is running jobs that cause excessive I/O to either the disk that you're using, or the home-directory server.  Logging into whichever nfs server it is (e.g. a12 for /export/a12) and running <code>sudo iftop</code>, and correlating the machines that have a lot of network traffic, with the output of <code>qstat</code>, can sometimes reveal who is the culprit.
+</p><p>If something you need is not installed, you can ask clsphelp@lists.johnshopkins.edu.  For things that are Debian packages and present no obvious security threat, we will typically install it right away (the same day)-- for example, if you need <code>nano</code> and the package is not installed.
+</p>
+<h2><span class="mw-headline" id="Example_usage">Example usage</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;action=edit&amp;section=2" title="Edit section: Example usage">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>There are two ways to submit jobs through qsub.
+You can either create a bash file with the qsub parameters, or input those parameters directly into the command line.
+</p><p>Say we have a python file, <code>hello.py</code>, that we want to submit to qsub with parameters.
+</p>
+<h3><span class="mw-headline" id="Useful_flags">Useful flags</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;action=edit&amp;section=3" title="Edit section: Useful flags">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>There are various flags you can add to qsub to control how your job is run. Some of these commands are optional. You should probably have an output log page, error log page, and memory requirements.
+</p>
+<ul><li><code>-o PATH-TO-LOG</code>: path to file where standard output is logged</li>
+<li><code>-e PATH-TO-ERROR-LOG</code>: path to file where standard error is logged</li>
+<li><code>-M EMAIL-ADDRESS</code>: send an email once job is done</li>
+<li><code>-l ARGS</code> specifies additional arguments.
+<ul><li><code>mem_free=#G</code> Memory being requested</li>
+<li><code>ram_free=#G</code> RAM being requested</li>
+<li><code>gpu=#</code> Number of GPUs reserved; only necessary if you want to use GPUs (if so, should probably be 1).</li></ul></li></ul>
+<dl><dd><dl><dd><dl><dd><a rel="nofollow" class="external text" href="http://wiki.clsp.jhu.edu/view/GPUs_on_the_Grid">This page</a> has a lot more information on GPU jobs on the grid; be sure to read it before submitting GPU jobs!</dd></dl></dd></dl></dd></dl>
+<ul><li><ul><li><code>h=PATTERN</code> Hosts specified, e.g. <code>h=b*</code> requests only the <code>b</code> hosts. These don't always follow standard regex format, but there are some examples above, and further information can be found by searching for specifics online, e.g. <a rel="nofollow" class="external text" href="https://stackoverflow.com/questions/13861220/excluding-nodes-from-qsub-command-under-sge">here</a> and <a rel="nofollow" class="external text" href="https://stackoverflow.com/questions/13861220/excluding-nodes-from-qsub-command-under-sge">here</a>.</li></ul></li>
+<li><code>-pe smp 4</code>: tells qsub to use 4 threads for each job</li></ul>
+<p><br />
+Some more:
+</p>
+<ul><li><code>-cwd</code>: runs from the directory where you ran your qsub job</li>
+<li><code>-V</code>: exports your environment variables (except LD_LIBRARY_PATH)</li>
+<li><code>-S /bin/bash</code>: ensures you're using bash (you can change this to be python if you want to write your script in python)</li>
+<li><code>-j y</code>: combine stdout and stderr into one log file (otherwise two log files per job)</li>
+<li><code>-t 1-1000</code>: run array job with 1000 tasks labeled 1 through 1000 (considered one job, useful for getting around job limit; the limit is 5000 tasks, so if you need more than that, then you need to run another array job)
+<ul><li><code>-tc 10</code>: run at most 10 tasks from array job at once</li></ul></li></ul>
+<h3><span class="mw-headline" id="Submitting_a_job_via_bash_file">Submitting a job via bash file</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;action=edit&amp;section=4" title="Edit section: Submitting a job via bash file">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Add the flags with #$, and the rest of the script (everything without the # sign) is the command I am running
+</p>
+<pre>#!/bin/bash
+#$ -cwd
+#$ -j y -o &lt;PATH-TO-LOG&gt;
+#$ -e &lt;PATH-TO-ERROR-LOG&gt;
+#$ -m eas
+#$ -M &lt;EMAIL&gt;
+#$ -l ARG_1=VAL_1,ARG_2=VAL_2, ...
+#$ -pe smp 4
+#$ -V
+
+python hello.py
+</pre>
+<h3><span class="mw-headline" id="Submitting_a_job_via_command_line">Submitting a job via command line</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;action=edit&amp;section=5" title="Edit section: Submitting a job via command line">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>To submit a bash script via command line, you can add each of the above flags as command line options.
+</p><p>To duplicate the above bash file as a command line script, first make a super simple bash script:
+</p>
+<pre># This is a script named hello.sh
+python /path/to/hello.py
+</pre>
+<p>And then run it with qsub:
+</p>
+<pre>qsub -cwd -j y -o &lt;PATH-TO-LOG&gt; -e &lt;PATH-TO-ERROR-LOG&gt; -m eas -M &lt;EMAIL&gt; -l ARG_1=VAL_1,ARG_2=VAL_2, ... -pe smp 4 -V hello.sh
+</pre>
+<p>For a simple python script that will submit your jobs to qsub via command line, see <a rel="nofollow" class="external text" href="https://gist.github.com/aryamccarthy/10c09cc8f738730ad3c52794bf6a4caa">this gist</a>
+</p>
+<h3><span class="mw-headline" id="Monitoring_a_job">Monitoring a job</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;action=edit&amp;section=6" title="Edit section: Monitoring a job">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>To see the jobs you're running, run 
+</p>
+<pre>qstat -u USERNAME
+</pre>
+<p>and you should see output that looks something like this
+</p>
+<pre>job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID
+-----------------------------------------------------------------------------------------------------------------
+ 997223 0.51102 baseline_s pxia         r     08/31/2017 17:33:05 all.q@b12.clsp.jhu.edu             1
+</pre>
+<ol><li>job-ID: This is the ID of the job.</li>
+<li>prior: priority, you don't have much control over this, so don't worry about it</li>
+<li>name: name of the job. To see the extended name of the job, run add the <code>-r</code> flag, e.g. run <code> qsub -u USERNAME -r </code>. This displays a lot of information.</li>
+<li>user: The username of the person running the job</li>
+<li>state: The important ones are listed in this table, while a more complete table is <a rel="nofollow" class="external text" href="https://gist.github.com/cmaureir/4fa2d34bc9a1bd194af1">here</a>:</li></ol>
+<table class="wikitable">
+
+<tbody><tr>
+<th>State
+</th>
+<th>Meaning
+</th>
+<th>Action
+</th></tr>
+<tr>
+<td><code>r</code>
+</td>
+<td>Running
+</td>
+<td>Okay
+</td></tr>
+<tr>
+<td><code>qw</code>
+</td>
+<td>Waiting
+</td>
+<td>Waiting to enter queue. Either the disks are full or you reached your quota.
+</td></tr>
+<tr>
+<td><code>Eqw</code>
+</td>
+<td>Error
+</td>
+<td>Flags might be wrong (e.g. path for log files might not exist)
+</td></tr></tbody></table>
+<ol><li>Submit/start at: Time the job began in its current state. Sometimes the clock is not in sync with real time.</li>
+<li>Queue: Which host (machine) it is running on, which queue (gpu/all) it is waiting in.</li>
+<li>slots: The number of cores you are using, as reserved by flag <code>-pe smp &lt;number of cores&gt;</code></li>
+<li>ja task-ID: tasks in an array job</li></ol>
+<p>TODO: explain how to use qacct to learn about dead jobs
+</p><p>There is also a simple web interface at <a rel="nofollow" class="external text" href="http://cs.jhu.edu/~winston/qstat.php">http://cs.jhu.edu/~winston/qstat.php</a>
+</p>
+<h3><span class="mw-headline" id="Deleting_a_job">Deleting a job</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;action=edit&amp;section=7" title="Edit section: Deleting a job">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Sometimes you want to delete a job. This is done with the <code>qdel</code> command, e.g. <code> qdel 997223 </code> would delete the job in this example.
+</p><p>If you want to delete all your jobs, you can type <code> qdel -u USER </code>. Caution: this deletes ALL your jobs.
+</p>
+<h3><span class="mw-headline" id="Finding_the_output_of_your_job">Finding the output of your job</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;action=edit&amp;section=8" title="Edit section: Finding the output of your job">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Standard output from your job will be placed in &lt;PATH-TO-LOG&gt;, while standard error will be at &lt;PATH-TO-ERROR-LOG&gt;. These logs are updated in a buffered manner, so even if it looks like nothing is bring printed, the program is probably still running. If you do not specify -o and -e, then the output and error files will be located in your home directory in something like run.sh.e328419.1.
+</p><p>Your program can also read, write, create, or delete additional files. You should be mindful of where your qsub script is being run from. If you use <code>-cwd</code>, the paths will be relative to the current directory. Otherwise, it is recommended to use absolute paths in your program.
+</p>
+<h2><span class="mw-headline" id="Another_example">Another example</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;action=edit&amp;section=9" title="Edit section: Another example">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p><a rel="nofollow" class="external text" href="http://star.mit.edu/cluster/docs/0.93.3/guides/sge.html">This</a> walks through another example.
+</p>
+<h2><span class="mw-headline" id="Utilities">Utilities</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;action=edit&amp;section=10" title="Edit section: Utilities">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li>clspmenu - provides htop, iftop, iotop, wall, email to clsphelp, qstat grepping, log viewing...</li>
+<li>q.who - displays users and their number of jobs (q.who vv breaks down grid nodes and statuses)</li>
+<li>sgestat - displays users and their number of jobs with a total</li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200618174121
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.022 seconds
+Real time usage: 0.023 seconds
+Preprocessor visited node count: 39/1000000
+Preprocessor generated node count: 44/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+</div>
+<!-- Saved in parser cache with key wiki2-mw2_:pcache:idhash:1966-0!canonical and timestamp 20200618174121 and revision id 9245
+ -->
+</div>					<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="http://wiki.clsp.jhu.edu/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;oldid=9245">http://wiki.clsp.jhu.edu/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;oldid=9245</a>"					</div>
+				<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>				<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-userpage"><a href="/index.php/User:Elias" class="new" dir="auto" title="Your user page (page does not exist) [.]" accesskey=".">Elias</a></li><li id="pt-mytalk"><a href="/index.php/User_talk:Elias" class="new" title="Your talk page (page does not exist) [n]" accesskey="n">My talk</a></li><li id="pt-preferences"><a href="/index.php/Special:Preferences" title="Your preferences">Preferences</a></li><li id="pt-watchlist"><a href="/index.php/Special:Watchlist" title="A list of pages you are monitoring for changes [l]" accesskey="l">Watchlist</a></li><li id="pt-mycontris"><a href="/index.php/Special:Contributions/Elias" title="A list of your contributions [y]" accesskey="y">My contributions</a></li><li id="pt-logout"><a href="/index.php?title=Special:UserLogout&amp;returnto=A+gentle+introduction+to+SGE+and+qsub&amp;logoutToken=f71932b80e7eb9e72ea6ed964015d9825eeba741%2B%5C" title="Log out">Log out</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+							<li id="ca-nstab-main" class="selected"><span><a href="/index.php/A_gentle_introduction_to_SGE_and_qsub" title="View the content page [c]" accesskey="c">Article</a></span></li><li id="ca-talk" class="new"><span><a href="/index.php?title=Talk:A_gentle_introduction_to_SGE_and_qsub&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page (page does not exist) [t]" accesskey="t">Discussion</a></span></li>						</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<input type="checkbox" class="vectorMenuCheckbox" aria-labelledby="p-variants-label" />
+						<h3 id="p-variants-label">
+							<span>Variants</span>
+						</h3>
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+							<li id="ca-view" class="collapsible selected"><span><a href="/index.php/A_gentle_introduction_to_SGE_and_qsub">Read</a></span></li><li id="ca-edit" class="collapsible"><span><a href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;action=edit" title="Edit this page [e]" accesskey="e">Edit</a></span></li><li id="ca-history" class="collapsible"><span><a href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;action=history" title="Past revisions of this page [h]" accesskey="h">View history</a></span></li><li id="ca-watch" class="collapsible icon mw-watchlink"><span><a href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;action=watch" data-mw="interface" title="Add this page to your watchlist [w]" accesskey="w">Watch</a></span></li>						</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu" aria-labelledby="p-cactions-label">
+						<input type="checkbox" class="vectorMenuCheckbox" aria-labelledby="p-cactions-label" />
+						<h3 id="p-cactions-label"><span>More</span></h3>
+						<div class="menu">
+							<ul>
+								<li id="ca-move"><a href="/index.php/Special:MovePage/A_gentle_introduction_to_SGE_and_qsub" title="Move this page [m]" accesskey="m">Move</a></li>							</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+						<form action="/index.php" id="searchform">
+							<div id="simpleSearch">
+								<input type="search" name="search" placeholder="Search CLSP Wiki" title="Search CLSP Wiki [f]" accesskey="f" id="searchInput"/><input type="hidden" value="Special:Search" name="title"/><input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton"/>							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="/index.php/Main_Page"  title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+			<h3 id="p-navigation-label">Navigation</h3>
+			<div class="body">
+								<ul>
+					<li id="n-mainpage"><a href="/index.php/Main_Page" title="Visit the main page [z]" accesskey="z">Main Page</a></li><li id="n-portal"><a href="/index.php/CLSP_Wiki:Community_Portal" title="About the project, what you can do, where to find things">Community portal</a></li><li id="n-currentevents"><a href="/index.php/Current_events" title="Find background information on current events">Current events</a></li><li id="n-recentchanges"><a href="/index.php/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li><li id="n-randompage"><a href="/index.php/Special:Random" title="Load a random page [x]" accesskey="x">Random page</a></li><li id="n-help"><a href="/index.php/Help:Contents" title="The place to find out">Help</a></li><li id="n-sitesupport"><a href="/index.php/CLSP_Wiki:Site_support">Donations</a></li>				</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+			<h3 id="p-tb-label">Toolbox</h3>
+			<div class="body">
+								<ul>
+					<li id="t-whatlinkshere"><a href="/index.php/Special:WhatLinksHere/A_gentle_introduction_to_SGE_and_qsub" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="/index.php/Special:RecentChangesLinked/A_gentle_introduction_to_SGE_and_qsub" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="/index.php/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;oldid=9245" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="/index.php?title=A_gentle_introduction_to_SGE_and_qsub&amp;action=info" title="More information about this page">Page information</a></li>				</ul>
+							</div>
+		</div>
+				</div>
+		</div>
+				<div id="footer" role="contentinfo">
+						<ul id="footer-info">
+								<li id="footer-info-lastmod"> This page was last edited on 5 November 2019, at 18:04.</li>
+							</ul>
+						<ul id="footer-places">
+								<li id="footer-places-privacy"><a href="/index.php/CLSP_Wiki:Privacy_policy" title="CLSP Wiki:Privacy policy">Privacy policy</a></li>
+								<li id="footer-places-about"><a href="/index.php/CLSP_Wiki:About" title="CLSP Wiki:About">About CLSP Wiki</a></li>
+								<li id="footer-places-disclaimer"><a href="/index.php/CLSP_Wiki:General_disclaimer" title="CLSP Wiki:General disclaimer">Disclaimers</a></li>
+							</ul>
+										<ul id="footer-icons" class="noprint">
+										<li id="footer-poweredbyico">
+						<a href="//www.mediawiki.org/"><img src="/resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31"/></a>					</li>
+									</ul>
+						<div style="clear: both;"></div>
+		</div>
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.022","walltime":"0.023","ppvisitednodes":{"value":39,"limit":1000000},"ppgeneratednodes":{"value":44,"limit":1000000},"postexpandincludesize":{"value":0,"limit":2097152},"templateargumentsize":{"value":0,"limit":2097152},"expansiondepth":{"value":2,"limit":40},"expensivefunctioncount":{"value":0,"limit":100},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":0,"limit":5000000},"timingprofile":["100.00%    0.000      1 -total"]},"cachereport":{"timestamp":"20200618174121","ttl":86400,"transientcontent":false}}});});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":210});});</script>
+	</body>
+</html>
