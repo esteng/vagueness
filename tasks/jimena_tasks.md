@@ -11,7 +11,7 @@
 	- understand general do's/don'ts of submitting jobs X
 	- understand how to submit an interactive job
 - set up a virtualenv using conda or virtualenv 
-	- python version 3.7 or 3.6
+	- python version 3.7 or 3.6 X
 - submit a practice job 
 	- make a python file called "example.py" that prints out the system information (system name, node name, machine, processor) (see [here](https://www.thepythoncode.com/article/get-hardware-system-information-python)) X
 	- run the script once on the login node  X
