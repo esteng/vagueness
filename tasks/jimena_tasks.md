@@ -2,21 +2,21 @@
 
 ## Housekeeping and setup
 - filling out paperwork 
-    - I-9 form 
+    - I-9 form X
 - get set up on CLSP grid [here](intro.html)
-	- understand difference between a login node and worker node 
-	- understand what kind of hardware is available 
+	- understand difference between a login node and worker node X
+	- understand what kind of hardware is available X
 - learn [how to submit jobs](qsub.html)
-	- understand role of a submission script 
-	- understand general do's/don'ts of submitting jobs
+	- understand role of a submission script X
+	- understand general do's/don'ts of submitting jobs X
 	- understand how to submit an interactive job
 - set up a virtualenv using conda or virtualenv 
 	- python version 3.7 or 3.6
 - submit a practice job 
-	- make a python file called "example.py" that prints out the system information (system name, node name, machine, processor) (see [here](https://www.thepythoncode.com/article/get-hardware-system-information-python))
-	- run the script once on the login node 
+	- make a python file called "example.py" that prints out the system information (system name, node name, machine, processor) (see [here](https://www.thepythoncode.com/article/get-hardware-system-information-python)) X
+	- run the script once on the login node  X
 	- run the script in an interactive job 
-	- run the script from inside a submitted bash script 
+	- run the script from inside a submitted bash script X
 
 ## Vagueness project 
 - download VQA dataset [here](https://visualqa.org)
