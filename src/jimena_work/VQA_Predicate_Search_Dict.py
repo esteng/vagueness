@@ -4,6 +4,9 @@ import re
 
 with open('/export/a14/jgualla1/v2_OpenEnded_mscoco_train2014_questions.json') as f:
     total_dict = json.load(f)
+    
+with open('/export/a14/jgualla1/v2_mscoco_train2014_annotations.json') as h:
+    total_annotation_dict = json.load(h)
 
 limit = 100
 limit_counter = 0
@@ -50,14 +53,20 @@ for key in total_dict:
             x = re.search(str(current_regex), q)
             if x: 
                 #print(q)
-                QUESTIONS_DICT[limit_counter] = {"image_id":i_id, "QApairs":{"question_id":q_id, "question": q}} 
+                for key in total_annotation_dict:
+                    annotation_dict = total_annotation_dict["annotations"]
+                    for annotation in annotation_dict:
+                        if q_id == annotation["question_id"]:
+                            answer = annotation["multiple_choice_answer"]
+                d = {"image_id":i_id, "QApairs":{"question_id":q_id, "question": q, "answer":answer}}
+                QUESTIONS_DICT.update(d) 
                 #print(current_regex)
         limit_counter = limit_counter + 1
         x = None
-        #if limit_counter == limit:
-            #break
-    #if limit_counter == limit:
-        #break
+        if limit_counter == limit:
+            break
+    if limit_counter == limit:
+        break
 
 print(limit_counter)
 print(QUESTIONS_DICT)
