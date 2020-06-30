@@ -32,12 +32,15 @@ regex_dict = {
         "yellow":"([iI]s)?([aA]n|[aA])?(([^\w])+([yY]ellow)[^\w])"
         }
 
+QUESTION_DICTIONARY = {}
+
 for key in total_dict:
     dict = total_dict[key]
     #print(key)
     question_dict = total_dict["questions"]
     for question in question_dict:
         q = question["question"]
+        i_id = question["image_id"]
         #print(q)
         #Adjectives
         for regex in regex_dict:
@@ -46,10 +49,13 @@ for key in total_dict:
             x = re.search(str(current_regex), q)
             if x:
                 print(q)
+                QUESTION_DICTIONARY[limit_counter] = {'question': q, 'imageId': i_id,  
                 #print(current_regex)
         limit_counter = limit_counter + 1
         x = None 
-        if limit_counter == limit:
-            break
-    if limit_counter == limit:
-        break
+        #if limit_counter == limit:
+            #break
+    #if limit_counter == limit:
+        #break
+
+print(limit_counter)

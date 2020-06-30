@@ -45,7 +45,8 @@ for key in total_dict:
             #print(current_regex)
             x = re.search(str(current_regex), q)
             if x:
-                print(q)
+                #print(q)
+                print(question)
                 #print(current_regex)
         limit_counter = limit_counter + 1
         x = None 
