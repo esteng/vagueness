@@ -4,6 +4,9 @@ import re
 
 with open('/export/a14/jgualla1/v2_OpenEnded_mscoco_train2014_questions.json') as f:
     total_dict = json.load(f)
+    
+with open('/export/a14/jgualla1/v2_mscoco_train2014_annotations.json') as h:
+    total_annotation_dict = json.load(h)
 
 with open('/export/a14/jgualla1/v2_mscoco_train2014_annotations.json') as h:
     total_annotation_dict = json.load(h)
@@ -33,7 +36,15 @@ regex_dict = {
         "heap":"([iI]s)?([aA]n|[aA])?(([^\w])+([hH]eap)[^\w])",
         "child":"([iI]s)?([aA]n|[aA])?(([^\w])+([cC]hild)[^\w])",
         "adult":"([iI]s)?([aA]n|[aA])?(([^\w])+([aA]dult)[^\w])",
-        "blue":"((iIs  
+        "blue":"([iI]s)?([aA]n|[aA])?(([^\w])+([bB]lue)[^\w])",
+        "brown":"([iI]s)?([aA]n|[aA])?(([^\w])+([bB]lue)[^\w])",
+        "green":"([iI]s)?([aA]n|[aA])?(([^\w])+([gG]reen)[^\w])",
+        "orange":"([iI]s)?([aA]n|[aA])?(([^\w])+([oO]range)[^\w])",
+        "pink":"([iI]s)?([aA]n|[aA])?(([^\w])+([pP]ink)[^\w])",
+        "purple":"([iI]s)?([aA]n|[aA])?(([^\w])+([pP]urple)[^\w])",
+        "red":"([iI]s)?([aA]n|[aA])?(([^\w])+([rR]ed)[^\w])",
+        "white":"([iI]s)?([aA]n|[aA])?(([^\w])+([wW]hite)[^\w])",
+        "yellow":"([iI]s)?([aA]n|[aA])?(([^\w])+([yY]ellow)[^\w])"
         }
 
 QUESTION_DICT = {}
@@ -48,7 +59,7 @@ for key in total_dict:
         q_answer = ANNOTATIONS_DICT[q_id]
         for regex in regex_dict:
             current_regex = regex_dict[regex]
-            x = re.search(str(current_regex), q)
+            x = re.search(current_regex, q)
             if x:
                 QUESTION_DICT[limit_counter] = {"image_id":i_id, "QApairs":{"question_id":q_id, "question":q, "answer":q_answer}}
                 limit_counter = limit_counter + 1
@@ -56,7 +67,7 @@ for key in total_dict:
         #if limit_counter == limit: 
             #break
     #if limit_counter == limit:
-        #break  
+        #break
 
 print(limit_counter)
 print(QUESTION_DICT)
