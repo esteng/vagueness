@@ -1,11 +1,27 @@
 import operator
 import json
 import re
+from collections import defaultdict
 
 with open('/export/a14/jgualla1/v2_OpenEnded_mscoco_train2014_questions.json') as f:
     total_dict = json.load(f)
+    
+with open('/export/a14/jgualla1/v2_mscoco_train2014_annotations.json') as h:
+    total_annotation_dict = json.load(h)
 
-limit = 1000
+with open('/export/a14/jgualla1/v2_mscoco_train2014_annotations.json') as h:
+    total_annotation_dict = json.load(h)
+
+ANNOTATIONS_DICT = {}
+
+for key in total_annotation_dict:
+    dict = total_annotation_dict[key]
+    annotation_dict = total_annotation_dict["annotations"]
+    for annotation in annotation_dict:
+        q_id = annotation["question_id"]
+        ANNOTATIONS_DICT[q_id] = annotation["multiple_choice_answer"]
+
+limit = 100
 limit_counter = 0
 
 regex_dict = {
@@ -21,15 +37,13 @@ regex_dict = {
         "heap":"([iI]s)?([aA]n|[aA])?(([^\w])+([hH]eap)[^\w])",
         #"child":"([iI]s)?([aA]n|[aA])?(([^\w])+([cC]hild)[^\w])",
         "adult":"([iI]s)?([aA]n|[aA])?(([^\w])+([aA]dult)[^\w])",
-        #"does":"(([^\w])+([dD]oes)[^\w])",
-        "age":"(([^\w])+([aA]ge)[^\w])",
+        "age":"(([^\w])+([aA]age)[^\w])",
         "enough":"(([^\w])+([eE]nough)[^\w])",
-        #"or":"(([^\w])+([oO]r)[^\w])",
         "nearly":"(([^\w])+([nN]early)[^\w])",
         "new":"(([^\w])+([nN]ew)[^\w])",
-        "overcast":"(([^\w])+([oO]vercast)[^\w])"
+        "overcast":"(([^\w])+([oO]overcast)[^\w])"
         #"blue":"([iI]s)?([aA]n|[aA])?(([^\w])+([bB]lue)[^\w])",
-        #"brown":"([iI]s)?([aA]n|[aA])?(([^\w])+([bB]rown)[^\w])", 
+        #"brown":"([iI]s)?([aA]n|[aA])?(([^\w])+([bB]lue)[^\w])",
         #"green":"([iI]s)?([aA]n|[aA])?(([^\w])+([gG]reen)[^\w])",
         #"orange":"([iI]s)?([aA]n|[aA])?(([^\w])+([oO]range)[^\w])",
         #"pink":"([iI]s)?([aA]n|[aA])?(([^\w])+([pP]ink)[^\w])",
@@ -39,28 +53,39 @@ regex_dict = {
         #"yellow":"([iI]s)?([aA]n|[aA])?(([^\w])+([yY]ellow)[^\w])"
         }
 
-QUESTION_DICTIONARY = {}
+QUESTION_DICT = defaultdict(list)
+there = False
 
 for key in total_dict:
     dict = total_dict[key]
-    #print(key)
     question_dict = total_dict["questions"]
     for question in question_dict:
         q = question["question"]
         i_id = question["image_id"]
+        q_id = question["question_id"]
+        q_answer = ANNOTATIONS_DICT[q_id]
         for regex in regex_dict:
             current_regex = regex_dict[regex]
-            #print(current_regex)
-            x = re.search(str(current_regex), q)
+            x = re.search(current_regex, q)
             if x:
-                print(q)
-                #QUESTION_DICTIONARY[limit_counter] = {'question': q, 'imageId': i_id}  
+                if i_id in QUESTION_DICT:
+                    for value in QUESTION_DICT[i_id]:
+                        if value == {"question_id":q_id, "question":q, "answer":q_answer}:
+                            there = True
+                    if there == True:
+                        pass
+                    else:
+                        QUESTION_DICT[i_id].append({"question_id":q_id, "question":q, "answer":q_answer})
+                else:
+                    QUESTION_DICT[i_id] = []
+                    QUESTION_DICT[i_id].append({"question_id":q_id, "question":q, "answer":q_answer})
                 limit_counter = limit_counter + 1
-        x = None 
-        if limit_counter == limit:
-            break
-    if limit_counter == limit:
-        break
+            there = False
+        x = None
+        #if limit_counter == limit: 
+            #break
+    #if limit_counter == limit:
+        #break
 
-#print(limit_counter)
-#print(QUESTION_DICTIONARY)
+#print(len(QUESTION_DICT))
+print(QUESTION_DICT)
