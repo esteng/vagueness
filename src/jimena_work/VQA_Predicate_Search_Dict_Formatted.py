@@ -9,9 +9,6 @@ with open('/export/a14/jgualla1/v2_OpenEnded_mscoco_train2014_questions.json') a
 with open('/export/a14/jgualla1/v2_mscoco_train2014_annotations.json') as h:
     total_annotation_dict = json.load(h)
 
-with open('/export/a14/jgualla1/v2_mscoco_train2014_annotations.json') as h:
-    total_annotation_dict = json.load(h)
-
 ANNOTATIONS_DICT = {}
 
 for key in total_annotation_dict:

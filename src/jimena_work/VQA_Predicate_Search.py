@@ -5,6 +5,22 @@ import re
 with open('/export/a14/jgualla1/v2_OpenEnded_mscoco_train2014_questions.json') as f:
     total_dict = json.load(f)
 
+with open('/export/a14/jgualla1/v2_mscoco_train2014_annotations.json') as h:
+    total_annotation_dict = json.load(h)
+
+ANNOTATIONS_DICT = {}
+yn_counter = 0
+
+for key in total_annotation_dict:
+    dict = total_annotation_dict[key]
+    annotation_dict = total_annotation_dict["annotations"]
+    for annotation in annotation_dict:
+        q_id = annotation["question_id"]
+        ANNOTATIONS_DICT[q_id] = annotation["multiple_choice_answer"]
+        y = re.search("(([^\w]|)+([yY]es)[^\w])|(([^\w]|)+([nN]o)[^\w])", annotation["multiple_choice_answer"])
+        if y:
+            yn_counter = yn_counter + 1 
+        
 limit = 1000
 limit_counter = 0
 
@@ -40,6 +56,8 @@ regex_dict = {
         }
 
 QUESTION_DICTIONARY = {}
+question_counter = 0
+yn_pred_counter = 0
 
 for key in total_dict:
     dict = total_dict[key]
@@ -48,19 +66,27 @@ for key in total_dict:
     for question in question_dict:
         q = question["question"]
         i_id = question["image_id"]
+        q_id = question["question_id"]
+        question_counter = question_counter + 1 
         for regex in regex_dict:
             current_regex = regex_dict[regex]
             #print(current_regex)
             x = re.search(str(current_regex), q)
             if x:
-                print(q)
+                #print(q)
                 #QUESTION_DICTIONARY[limit_counter] = {'question': q, 'imageId': i_id}  
-                limit_counter = limit_counter + 1
+                limit_counter = limit_counter + 1 
+                y = re.search("(([^\w]|)+([yY]es)[^\w])|(([^\w]|)+([nN]o)[^\w])", ANNOTATIONS_DICT[q_id])
+                if y:
+                    yn_pred_counter = yn_pred_counter + 1 
         x = None 
-        if limit_counter == limit:
-            break
-    if limit_counter == limit:
-        break
+        #if limit_counter == limit:
+            #break
+    #if limit_counter == limit:
+        #break
 
-#print(limit_counter)
+print("Total number of question for entire dataset: " + str(question_counter))
+print("Total number of question of predicate set: " + str(limit_counter))
 #print(QUESTION_DICTIONARY)
+print("Number of yes no question for entire dataset: " + str(yn_counter))
+print("Number of yes no question for predicate set: " + str(yn_pred_counter))
