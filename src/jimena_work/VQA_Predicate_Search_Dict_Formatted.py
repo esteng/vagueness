@@ -87,5 +87,8 @@ for key in total_dict:
     #if limit_counter == limit:
         #break
 
+with open("output.json","w" as f1:
+        json.dump(QUESTION_DICT, f1)
+
 #print(len(QUESTION_DICT))
-print(QUESTION_DICT)
+#print(QUESTION_DICT)
