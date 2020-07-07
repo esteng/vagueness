@@ -74,6 +74,14 @@ regex_dict = {
         #"yellow":"([iI]s)?([aA]n|[aA])?(([^\w])+([yY]ellow)[^\w])"
         }
 
+non_regex_dict = {
+    "what sort of": "([Ww]hat sort of)",
+    "what type of": "([Ww]hat type of)",
+    "what color": "([wW]hat color)",
+    "where is": "([wW]here is)",
+    "why is": "([wW]hy is)",
+    "what is": "([wW]hat is)"}
+
 QUESTION_DICTIONARY = {}
 question_counter = 0
 predicate_counter = 0 
@@ -93,10 +101,20 @@ for key in total_dict:
         for regex in regex_dict:
             current_regex = regex_dict[regex]
             x = re.search(str(current_regex), q)
+            #for non_regex in non_regex_dict:
+    
             if x:
-                #print(q)
-                QUESTION_DICTIONARY[q_id] = {'question': q, 'question_id':q_id, 'question_type': q_type, 'imageId': i_id}
                 break
+                #print(q)
+        for non_regex in non_regex_dict:
+            current_non_regex = non_regex_dict[non_regex]
+            y = re.search(str(current_non_regex), q)
+            if y:
+                x = None
+                break
+        if x:
+            QUESTION_DICTIONARY[q_id] = {'question': q, 'question_id':q_id, 'question_type': q_type, 'imageId': i_id}
+            #break
                 #if q_type =="yes/no":
                     #yn_predicate_counter = yn_predicate_counter + 1 
                 #predicate_counter = predicate_counter + 1
@@ -123,7 +141,7 @@ print("Total number of questions: " + str(question_counter/6))
 print("Total number of predicate questions: " + str(len(QUESTION_DICTIONARY)))
 print("Total number of yes/no answers for predicate set: " + str(yn_predicate_counter))
 
-res = random.sample(range(1,8887), 100)
+res = random.sample(range(1,8236), 100)
 
 for num in res:
     current_id = list(QUESTION_DICTIONARY)[num]

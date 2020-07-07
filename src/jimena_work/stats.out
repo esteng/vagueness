@@ -1,105 +1,105 @@
 Total number of answer groups (for each answer) for entire dataset: 2218785
 Total number of yes/no answer groups: 834410
 Total number of questions: 443757
-Total number of predicate questions: 8888
+Total number of predicate questions: 8236
 Total number of yes/no answers for predicate set: 5665
-{'imageId': 111371, 'question': u'Is this a young man skating?', 'question_type': u'yes/no', 'question_id': 111371002}
-{'imageId': 425652, 'question': u'Is this a sunny day?', 'question_type': u'yes/no', 'question_id': 425652001}
-{'imageId': 337416, 'question': u'Is there sunny?', 'question_type': u'yes/no', 'question_id': 337416016}
-{'imageId': 546686, 'question': u'Are there any young trees visible?', 'question_type': u'yes/no', 'question_id': 546686003}
-{'imageId': 121884, 'question': u'What sort of business is this?', 'question_type': u'other', 'question_id': 121884007}
-{'imageId': 576883, 'question': u'What is high in the photo?', 'question_type': u'other', 'question_id': 576883006}
-{'imageId': 52440, 'question': u'Does the blue suitcase look new?', 'question_type': u'yes/no', 'question_id': 52440004}
-{'imageId': 472841, 'question': u'Is this animal an adult?', 'question_type': u'yes/no', 'question_id': 472841004}
-{'imageId': 493812, 'question': u'Is it cloudy?', 'question_type': u'yes/no', 'question_id': 493812001}
-{'imageId': 455340, 'question': u'What color coat is the young man wearing?', 'question_type': u'other', 'question_id': 455340003}
-{'imageId': 255669, 'question': u'Is this child old enough to read the book in front of him?', 'question_type': u'yes/no', 'question_id': 255669008}
-{'imageId': 277334, 'question': u'Is it sunny day?', 'question_type': u'yes/no', 'question_id': 277334000}
-{'imageId': 170348, 'question': u'Overcast or sunny?', 'question_type': u'other', 'question_id': 170348001}
-{'imageId': 80987, 'question': u'Is it sunny?', 'question_type': u'yes/no', 'question_id': 80987000}
-{'imageId': 272405, 'question': u'How tall is the clock tower?', 'question_type': u'number', 'question_id': 272405006}
-{'imageId': 101989, 'question': u'Is it sunny?', 'question_type': u'yes/no', 'question_id': 101989001}
-{'imageId': 160670, 'question': u'Is the person taking the picture with new technology or old technology?', 'question_type': u'other', 'question_id': 160670000}
-{'imageId': 17308, 'question': u'How old is this person?', 'question_type': u'number', 'question_id': 17308001}
-{'imageId': 268982, 'question': u'What is tall in the background?', 'question_type': u'other', 'question_id': 268982009}
-{'imageId': 268590, 'question': u'How old is the woman?', 'question_type': u'number', 'question_id': 268590003}
-{'imageId': 242008, 'question': u'How old is the boy?', 'question_type': u'number', 'question_id': 242008000}
-{'imageId': 554742, 'question': u'What sort of shoes is he wearing?', 'question_type': u'other', 'question_id': 554742002}
-{'imageId': 88029, 'question': u'What sort of animal is in the picture?', 'question_type': u'other', 'question_id': 88029006}
-{'imageId': 327530, 'question': u'Is that a new roll of toilet paper?', 'question_type': u'yes/no', 'question_id': 327530001}
-{'imageId': 24319, 'question': u'Does this look like an adult giraffe?', 'question_type': u'yes/no', 'question_id': 24319004}
-{'imageId': 58413, 'question': u'Is it sunny?', 'question_type': u'yes/no', 'question_id': 58413000}
-{'imageId': 395007, 'question': u'Is this an old building?', 'question_type': u'yes/no', 'question_id': 395007001}
-{'imageId': 111873, 'question': u'How high do they jump?', 'question_type': u'number', 'question_id': 111873000}
-{'imageId': 68996, 'question': u'Is this a cloudy day?', 'question_type': u'yes/no', 'question_id': 68996000}
-{'imageId': 346950, 'question': u"What is the adult's profession?", 'question_type': u'other', 'question_id': 346950001}
-{'imageId': 459982, 'question': u'Is the tower 16 feet tall?', 'question_type': u'yes/no', 'question_id': 459982002}
-{'imageId': 376941, 'question': u'What sort of tags are on the handles?', 'question_type': u'other', 'question_id': 376941001}
-{'imageId': 242169, 'question': u'Is it sunny?', 'question_type': u'yes/no', 'question_id': 242169002}
-{'imageId': 416718, 'question': u'Is this plane accepting new passengers?', 'question_type': u'yes/no', 'question_id': 416718003}
-{'imageId': 312105, 'question': u'Is the man bald?', 'question_type': u'yes/no', 'question_id': 312105003}
-{'imageId': 222260, 'question': u'Is the child old enough to sit up?', 'question_type': u'yes/no', 'question_id': 222260001}
-{'imageId': 449517, 'question': u'Is it sunny?', 'question_type': u'yes/no', 'question_id': 449517009}
-{'imageId': 52503, 'question': u'How old is this inscription?', 'question_type': u'number', 'question_id': 52503001}
-{'imageId': 506910, 'question': u'Is it a cloudy day?', 'question_type': u'yes/no', 'question_id': 506910005}
-{'imageId': 278731, 'question': u'Is this a city bus surrounded by tall buildings?', 'question_type': u'yes/no', 'question_id': 278731004}
-{'imageId': 224303, 'question': u'Is it sunny in the picture?', 'question_type': u'yes/no', 'question_id': 224303003}
-{'imageId': 416625, 'question': u'Is this an adult?', 'question_type': u'yes/no', 'question_id': 416625001}
-{'imageId': 477892, 'question': u'Is this a new picture?', 'question_type': u'yes/no', 'question_id': 477892000}
-{'imageId': 146091, 'question': u'Is it a sunny day?', 'question_type': u'yes/no', 'question_id': 146091006}
-{'imageId': 252364, 'question': u'Is it high tide?', 'question_type': u'yes/no', 'question_id': 252364007}
-{'imageId': 3219, 'question': u'Do these items belong to an adult or a child?', 'question_type': u'other', 'question_id': 3219005}
-{'imageId': 304214, 'question': u'What do you call these bears based on their age?', 'question_type': u'other', 'question_id': 304214000}
-{'imageId': 459747, 'question': u'Is it sunny?', 'question_type': u'yes/no', 'question_id': 459747002}
-{'imageId': 101826, 'question': u'Do the houses look old or new?', 'question_type': u'other', 'question_id': 101826001}
-{'imageId': 184889, 'question': u'What color coat is the young man wearing?', 'question_type': u'other', 'question_id': 184889005}
-{'imageId': 580681, 'question': u'Is the clock old?', 'question_type': u'yes/no', 'question_id': 580681002}
-{'imageId': 475451, 'question': u'Is the grass tall?', 'question_type': u'yes/no', 'question_id': 475451000}
-{'imageId': 97056, 'question': u'Is the red boat new?', 'question_type': u'yes/no', 'question_id': 97056000}
-{'imageId': 297678, 'question': u'Is this a new board or old?', 'question_type': u'other', 'question_id': 297678001}
-{'imageId': 497731, 'question': u'Is it cloudy?', 'question_type': u'yes/no', 'question_id': 497731000}
-{'imageId': 238003, 'question': u'Is it sunny?', 'question_type': u'yes/no', 'question_id': 238003007}
-{'imageId': 353046, 'question': u'Is it sunny?', 'question_type': u'yes/no', 'question_id': 353046001}
-{'imageId': 516994, 'question': u'What is age of elephant?', 'question_type': u'number', 'question_id': 516994003}
-{'imageId': 161924, 'question': u'Is it sunny?', 'question_type': u'yes/no', 'question_id': 161924001}
-{'imageId': 412880, 'question': u'Sunny or overcast?', 'question_type': u'other', 'question_id': 412880005}
-{'imageId': 538194, 'question': u'Is it sunny in this photo?', 'question_type': u'yes/no', 'question_id': 538194002}
-{'imageId': 381194, 'question': u'Is it a cloudy day?', 'question_type': u'yes/no', 'question_id': 381194001}
-{'imageId': 542651, 'question': u'Is the bench new?', 'question_type': u'yes/no', 'question_id': 542651000}
-{'imageId': 357339, 'question': u'Is it sunny?', 'question_type': u'yes/no', 'question_id': 357339002}
-{'imageId': 553366, 'question': u'Why is the post so high?', 'question_type': u'other', 'question_id': 553366004}
-{'imageId': 4065, 'question': u'How old are the women?', 'question_type': u'number', 'question_id': 4065000}
-{'imageId': 270558, 'question': u'Is this a young or old animal?', 'question_type': u'other', 'question_id': 270558003}
-{'imageId': 521998, 'question': u'Is the person tall?', 'question_type': u'yes/no', 'question_id': 521998006}
-{'imageId': 17078, 'question': u'Is it sunny or cloudy?', 'question_type': u'other', 'question_id': 17078003}
-{'imageId': 333586, 'question': u'How old is this animal?', 'question_type': u'number', 'question_id': 333586005}
-{'imageId': 187518, 'question': u'Is this a new kitchen?', 'question_type': u'yes/no', 'question_id': 187518001}
-{'imageId': 18507, 'question': u'Is it cloudy?', 'question_type': u'yes/no', 'question_id': 18507003}
-{'imageId': 363426, 'question': u'How old is the person in the water?', 'question_type': u'number', 'question_id': 363426001}
-{'imageId': 79513, 'question': u'Is this a young woman playing tennis?', 'question_type': u'yes/no', 'question_id': 79513002}
-{'imageId': 574538, 'question': u'Is the furniture old?', 'question_type': u'yes/no', 'question_id': 574538014}
-{'imageId': 532744, 'question': u'Is that an old car?', 'question_type': u'yes/no', 'question_id': 532744002}
-{'imageId': 441646, 'question': u'How high up is he?', 'question_type': u'number', 'question_id': 441646000}
-{'imageId': 332812, 'question': u'Is this an old picture?', 'question_type': u'yes/no', 'question_id': 332812007}
-{'imageId': 161386, 'question': u'Is there enough light in this office space?', 'question_type': u'yes/no', 'question_id': 161386005}
-{'imageId': 153671, 'question': u'Does the woman have on a low neck top?', 'question_type': u'yes/no', 'question_id': 153671002}
-{'imageId': 128181, 'question': u'Overcast or sunny?', 'question_type': u'other', 'question_id': 128181000}
-{'imageId': 356948, 'question': u'How old are these devices?', 'question_type': u'number', 'question_id': 356948000}
+{'imageId': 319785, 'question': u'Is this a new or old parking meter?', 'question_type': u'other', 'question_id': 319785000}
+{'imageId': 352564, 'question': u'Are the apartments old or new?', 'question_type': u'other', 'question_id': 352564002}
+{'imageId': 391113, 'question': u'Is the grass very tall?', 'question_type': u'yes/no', 'question_id': 391113000}
+{'imageId': 533742, 'question': u'Does this show high-tech water-wear for surfers?', 'question_type': u'yes/no', 'question_id': 533742006}
+{'imageId': 422769, 'question': u'How old does this man look?', 'question_type': u'number', 'question_id': 422769002}
+{'imageId': 186794, 'question': u'Is it a cloudy day?', 'question_type': u'yes/no', 'question_id': 186794004}
+{'imageId': 478031, 'question': u'Is it a sunny day?', 'question_type': u'yes/no', 'question_id': 478031010}
+{'imageId': 132564, 'question': u'How tall is the man?', 'question_type': u'number', 'question_id': 132564002}
+{'imageId': 165412, 'question': u'IS the bus old?', 'question_type': u'yes/no', 'question_id': 165412011}
+{'imageId': 267116, 'question': u'Is this mostly a young crowd?', 'question_type': u'yes/no', 'question_id': 267116000}
+{'imageId': 289738, 'question': u'Is this a high speed train?', 'question_type': u'yes/no', 'question_id': 289738005}
+{'imageId': 399615, 'question': u'Is the kitchen new?', 'question_type': u'yes/no', 'question_id': 399615014}
+{'imageId': 361071, 'question': u'Is the bus old?', 'question_type': u'yes/no', 'question_id': 361071002}
+{'imageId': 92684, 'question': u"Do the man's sneakers look old?", 'question_type': u'yes/no', 'question_id': 92684001}
+{'imageId': 71157, 'question': u'How old is the man in the picture?', 'question_type': u'number', 'question_id': 71157002}
+{'imageId': 578250, 'question': u'How many people in the image are adult?', 'question_type': u'number', 'question_id': 578250016}
+{'imageId': 541208, 'question': u"Are the boy's shoes new?", 'question_type': u'yes/no', 'question_id': 541208003}
+{'imageId': 352831, 'question': u'Would anyone think that this dog is a terror of the high seas?', 'question_type': u'yes/no', 'question_id': 352831004}
+{'imageId': 119093, 'question': u'Is it a sunny day?', 'question_type': u'yes/no', 'question_id': 119093000}
 {'imageId': 566514, 'question': u'What does the man new the animals have in his hand?', 'question_type': u'other', 'question_id': 566514004}
-{'imageId': 555206, 'question': u'How high is the diving board?', 'question_type': u'other', 'question_id': 555206001}
-{'imageId': 497033, 'question': u'How old is the plane?', 'question_type': u'number', 'question_id': 497033010}
-{'imageId': 394748, 'question': u'Is it a sunny day?', 'question_type': u'yes/no', 'question_id': 394748001}
-{'imageId': 244418, 'question': u'How tall do you think these giraffes are?', 'question_type': u'number', 'question_id': 244418001}
-{'imageId': 268523, 'question': u'Does this look like a new boat?', 'question_type': u'yes/no', 'question_id': 268523007}
-{'imageId': 263599, 'question': u'Is the sky cloudy?', 'question_type': u'yes/no', 'question_id': 263599001}
-{'imageId': 565098, 'question': u'Is it a cloudy day?', 'question_type': u'yes/no', 'question_id': 565098015}
-{'imageId': 85084, 'question': u'Is this a sunny day?', 'question_type': u'yes/no', 'question_id': 85084001}
-{'imageId': 364867, 'question': u'Is it sunny?', 'question_type': u'yes/no', 'question_id': 364867002}
-{'imageId': 257976, 'question': u'How tall is the child?', 'question_type': u'number', 'question_id': 257976001}
-{'imageId': 552486, 'question': u'Does this day look bright and sunny?', 'question_type': u'yes/no', 'question_id': 552486002}
-{'imageId': 525443, 'question': u'Is this a high carb dish?', 'question_type': u'yes/no', 'question_id': 525443000}
-{'imageId': 504184, 'question': u'Are these new toothbrushes?', 'question_type': u'yes/no', 'question_id': 504184000}
-{'imageId': 352828, 'question': u'Is this an old time photo?', 'question_type': u'yes/no', 'question_id': 352828007}
-{'imageId': 361339, 'question': u'What sort of animal is present in the scene?', 'question_type': u'other', 'question_id': 361339002}
-{'imageId': 428599, 'question': u'Is this a brand new appliance?', 'question_type': u'yes/no', 'question_id': 428599002}
-{'imageId': 32174, 'question': u'Is the sky cloudy or clear?', 'question_type': u'other', 'question_id': 32174006}
+{'imageId': 108264, 'question': u'Is the gas tank new or old?', 'question_type': u'other', 'question_id': 108264002}
+{'imageId': 581008, 'question': u'Is there a likely high humidity in this area right now?', 'question_type': u'yes/no', 'question_id': 581008001}
+{'imageId': 496439, 'question': u'Are these adult cows?', 'question_type': u'yes/no', 'question_id': 496439000}
+{'imageId': 21404, 'question': u'IS it cloudy?', 'question_type': u'yes/no', 'question_id': 21404005}
+{'imageId': 237222, 'question': u'Is the sky overcast?', 'question_type': u'yes/no', 'question_id': 237222004}
+{'imageId': 237897, 'question': u'How old do you think this dog is?', 'question_type': u'number', 'question_id': 237897004}
+{'imageId': 506514, 'question': u'Is it sunny?', 'question_type': u'yes/no', 'question_id': 506514001}
+{'imageId': 221317, 'question': u'Is this a new picture?', 'question_type': u'yes/no', 'question_id': 221317023}
+{'imageId': 571677, 'question': u'Is he young or old?', 'question_type': u'other', 'question_id': 571677003}
+{'imageId': 187929, 'question': u'Is it sunny or about to rain?', 'question_type': u'other', 'question_id': 187929001}
+{'imageId': 327234, 'question': u'Is the weather sunny?', 'question_type': u'yes/no', 'question_id': 327234003}
+{'imageId': 515878, 'question': u'Is the decor brand new or older?', 'question_type': u'other', 'question_id': 515878000}
+{'imageId': 143756, 'question': u'Is the day sunny?', 'question_type': u'yes/no', 'question_id': 143756006}
+{'imageId': 310808, 'question': u'Is it sunny?', 'question_type': u'yes/no', 'question_id': 310808001}
+{'imageId': 182861, 'question': u'Is it sunny in the picture?', 'question_type': u'yes/no', 'question_id': 182861004}
+{'imageId': 242116, 'question': u'IS this place old?', 'question_type': u'yes/no', 'question_id': 242116000}
+{'imageId': 497216, 'question': u'Is it a cloudy day?', 'question_type': u'yes/no', 'question_id': 497216000}
+{'imageId': 6518, 'question': u'Overcast or sunny?', 'question_type': u'other', 'question_id': 6518003}
+{'imageId': 223154, 'question': u'Sunny or overcast?', 'question_type': u'other', 'question_id': 223154000}
+{'imageId': 578369, 'question': u'Are these people young?', 'question_type': u'yes/no', 'question_id': 578369000}
+{'imageId': 187435, 'question': u'Is this a child or an adult?', 'question_type': u'other', 'question_id': 187435005}
+{'imageId': 418569, 'question': u'Is it a sunny day?', 'question_type': u'yes/no', 'question_id': 418569019}
+{'imageId': 56566, 'question': u'Is it sunny day?', 'question_type': u'yes/no', 'question_id': 56566007}
+{'imageId': 49796, 'question': u'Is the sky clear and sunny?', 'question_type': u'yes/no', 'question_id': 49796001}
+{'imageId': 62351, 'question': u'Hazy or sunny?', 'question_type': u'other', 'question_id': 62351005}
+{'imageId': 475325, 'question': u'Is this a new or old photos?', 'question_type': u'other', 'question_id': 475325002}
+{'imageId': 187518, 'question': u'Is this a new kitchen?', 'question_type': u'yes/no', 'question_id': 187518001}
+{'imageId': 64377, 'question': u'Are the mountains high?', 'question_type': u'yes/no', 'question_id': 64377000}
+{'imageId': 67566, 'question': u'Are there enough waves for good surfing?', 'question_type': u'yes/no', 'question_id': 67566008}
+{'imageId': 233477, 'question': u'Is this an old photo?', 'question_type': u'yes/no', 'question_id': 233477022}
+{'imageId': 49257, 'question': u'Are these young men sitting together?', 'question_type': u'yes/no', 'question_id': 49257001}
+{'imageId': 560481, 'question': u'Is it a sunny day?', 'question_type': u'yes/no', 'question_id': 560481006}
+{'imageId': 81906, 'question': u'Is this a New York style pizza?', 'question_type': u'yes/no', 'question_id': 81906001}
+{'imageId': 83770, 'question': u'Is it a sunny day?', 'question_type': u'yes/no', 'question_id': 83770001}
+{'imageId': 571916, 'question': u'Is it sunny?', 'question_type': u'yes/no', 'question_id': 571916061}
+{'imageId': 288227, 'question': u'Is this a cloudy day?', 'question_type': u'yes/no', 'question_id': 288227014}
+{'imageId': 297091, 'question': u"How old is the room's occupant?", 'question_type': u'number', 'question_id': 297091000}
+{'imageId': 244928, 'question': u'Is it a sunny day?', 'question_type': u'yes/no', 'question_id': 244928001}
+{'imageId': 148251, 'question': u'How tall is the giraffe?', 'question_type': u'number', 'question_id': 148251004}
+{'imageId': 312661, 'question': u'How tall are the waves?', 'question_type': u'other', 'question_id': 312661001}
+{'imageId': 33793, 'question': u'They appear old?', 'question_type': u'yes/no', 'question_id': 33793006}
+{'imageId': 181413, 'question': u'How old is the dog?', 'question_type': u'number', 'question_id': 181413000}
+{'imageId': 33733, 'question': u'Is it sunny out?', 'question_type': u'yes/no', 'question_id': 33733000}
+{'imageId': 259535, 'question': u'Is it a sunny day?', 'question_type': u'yes/no', 'question_id': 259535000}
+{'imageId': 15404, 'question': u'Is it sunny or rainy?', 'question_type': u'other', 'question_id': 15404003}
+{'imageId': 252596, 'question': u'Is it a cloudy day?', 'question_type': u'yes/no', 'question_id': 252596010}
+{'imageId': 3911, 'question': u'Is one of the edibles shown here high in vitamin A?', 'question_type': u'yes/no', 'question_id': 3911041}
+{'imageId': 519369, 'question': u'Is the shower big enough to be comfortable in?', 'question_type': u'yes/no', 'question_id': 519369001}
+{'imageId': 100318, 'question': u'Are this adult zebras?', 'question_type': u'yes/no', 'question_id': 100318000}
+{'imageId': 461002, 'question': u'Is the kid old enough to swing on the swing set without an adult?', 'question_type': u'yes/no', 'question_id': 461002010}
+{'imageId': 291767, 'question': u'Is it cloudy?', 'question_type': u'yes/no', 'question_id': 291767000}
+{'imageId': 485300, 'question': u'Is it a cloudy day?', 'question_type': u'yes/no', 'question_id': 485300002}
+{'imageId': 475668, 'question': u'What age group are these people in?', 'question_type': u'other', 'question_id': 475668000}
+{'imageId': 561203, 'question': u'Is the child behind the adult?', 'question_type': u'yes/no', 'question_id': 561203002}
+{'imageId': 250677, 'question': u'Is it cloudy?', 'question_type': u'yes/no', 'question_id': 250677007}
+{'imageId': 190094, 'question': u'Is this a high calorie food?', 'question_type': u'yes/no', 'question_id': 190094007}
+{'imageId': 89044, 'question': u'How old is this baby zebra?', 'question_type': u'number', 'question_id': 89044006}
+{'imageId': 1569, 'question': u'Is the woman young?', 'question_type': u'yes/no', 'question_id': 1569004}
+{'imageId': 399649, 'question': u'Do these animals have enough to eat?', 'question_type': u'yes/no', 'question_id': 399649004}
+{'imageId': 188130, 'question': u'Is the sky overcast?', 'question_type': u'yes/no', 'question_id': 188130000}
+{'imageId': 371939, 'question': u'Is it sunny?', 'question_type': u'yes/no', 'question_id': 371939002}
+{'imageId': 574792, 'question': u'Is the man under 40 years of age?', 'question_type': u'yes/no', 'question_id': 574792005}
+{'imageId': 368661, 'question': u'Do the cows have enough food?', 'question_type': u'yes/no', 'question_id': 368661002}
+{'imageId': 425038, 'question': u'About how old is the girl?', 'question_type': u'number', 'question_id': 425038005}
+{'imageId': 49782, 'question': u'Is this a warm and sunny climate?', 'question_type': u'yes/no', 'question_id': 49782015}
+{'imageId': 71016, 'question': u'Is this some sort of Military aircraft?', 'question_type': u'yes/no', 'question_id': 71016000}
+{'imageId': 492489, 'question': u'Does this belong to a child or an adult?', 'question_type': u'other', 'question_id': 492489001}
+{'imageId': 291683, 'question': u'Is the fire hydrant new?', 'question_type': u'yes/no', 'question_id': 291683001}
+{'imageId': 577925, 'question': u'Is it a warm sunny day?', 'question_type': u'yes/no', 'question_id': 577925002}
+{'imageId': 414314, 'question': u'Is it a sunny day?', 'question_type': u'yes/no', 'question_id': 414314002}
+{'imageId': 121867, 'question': u'How old is the young boy?', 'question_type': u'number', 'question_id': 121867003}
+{'imageId': 544850, 'question': u'Is this man completely bald?', 'question_type': u'yes/no', 'question_id': 544850008}
+{'imageId': 319299, 'question': u'Is it sunny?', 'question_type': u'yes/no', 'question_id': 319299013}
+{'imageId': 148217, 'question': u'Is the old man with the pink umbrella holding anything in his left hand?', 'question_type': u'yes/no', 'question_id': 148217000}
+{'imageId': 248052, 'question': u'What age group are these people in?', 'question_type': u'other', 'question_id': 248052002}
+{'imageId': 116804, 'question': u'What league is it likely these young people play in?', 'question_type': u'other', 'question_id': 116804000}
+{'imageId': 511157, 'question': u'Is it overcast or sunny?', 'question_type': u'other', 'question_id': 511157000}
+{'imageId': 19901, 'question': u'Are all of the giraffes the same age?', 'question_type': u'yes/no', 'question_id': 19901002}
+{'imageId': 502361, 'question': u'Is this a new building?', 'question_type': u'yes/no', 'question_id': 502361004}
+{'imageId': 449152, 'question': u'Was this taken at high noon?', 'question_type': u'yes/no', 'question_id': 449152002}
