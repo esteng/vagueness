@@ -8,10 +8,8 @@ with open('/export/a14/jgualla1/v2_OpenEnded_mscoco_train2014_questions.json') a
 with open('/export/a14/jgualla1/v2_mscoco_train2014_annotations.json') as h:
     total_annotation_dict = json.load(h)
 
-with open('/export/a14/jgualla1/v2_mscoco_train2014_annotations.json') as h:
-    total_annotation_dict = json.load(h)
-
 ANNOTATIONS_DICT = {}
+yn_counter = 0
 
 for key in total_annotation_dict:
     dict = total_annotation_dict[key]
@@ -19,6 +17,9 @@ for key in total_annotation_dict:
     for annotation in annotation_dict:
         q_id = annotation["question_id"]
         ANNOTATIONS_DICT[q_id] = annotation["multiple_choice_answer"]
+        y = re.search("([yY]es|[nN]o)", annotations["multiple_choice_answer"])
+        if y:
+            yn_counter = yn_counter + 1 
 
 limit = 10
 limit_counter = 0
@@ -48,6 +49,7 @@ regex_dict = {
         }
 
 QUESTION_DICT = {}
+yn__counter_pred = 0
 
 for key in total_dict:
     dict = total_dict[key]

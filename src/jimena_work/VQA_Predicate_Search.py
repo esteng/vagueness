@@ -80,7 +80,18 @@ non_regex_dict = {
     "what color": "([wW]hat color)",
     "where is": "([wW]here is)",
     "why is": "([wW]hy is)",
-    "what is": "([wW]hat is)"}
+    "what is": "([wW]hat is)",
+    "how many": "([hH]ow many)",
+    "some sort of": "([sS]ome sort of)",
+    "a sort of": "([aA] sort of)",
+    #"sort": "([sS]ort)",
+    "according to": "([aA]ccording to)",
+    "likely": "([lL]ikely)",
+    "does this belong": "([dD]oes this belong to)",
+    "does this item belong": "([dD]oes this item belong)",
+    "do these belong to": "([dD]o these belong to)",
+    "do these items belong to": "([dD]o these items belong to)"
+    }
 
 QUESTION_DICTIONARY = {}
 question_counter = 0
@@ -141,7 +152,7 @@ print("Total number of questions: " + str(question_counter/6))
 print("Total number of predicate questions: " + str(len(QUESTION_DICTIONARY)))
 print("Total number of yes/no answers for predicate set: " + str(yn_predicate_counter))
 
-res = random.sample(range(1,8236), 100)
+res = random.sample(range(1,8019), 100)
 
 for num in res:
     current_id = list(QUESTION_DICTIONARY)[num]
