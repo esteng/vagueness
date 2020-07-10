@@ -90,7 +90,19 @@ non_regex_dict = {
     "does this belong": "([dD]oes this belong to)",
     "does this item belong": "([dD]oes this item belong)",
     "do these belong to": "([dD]o these belong to)",
-    "do these items belong to": "([dD]o these items belong to)"
+    "do these items belong to": "([dD]o these items belong to)",
+    "doing": "([dD]oing)",
+    "what number of": "([iI]s it for)",
+    "the same age": "([tT]he same age)",
+    "are they at": "([aA]re they at)",
+    "a new form": "([aA] new for of)",
+    "seem to have": "([sS]eem to have)",
+    "would anyone think": "([wW]ould anyone think)",
+    "by choice": "([bB]y choice)",
+    "based on their age": "([bB]ased on their age)",
+    "holding anything": "([hH]olding anything)",
+    "the same": "([tT]he same)",
+    "what age group": "([wW]hat age group)"
     }
 
 QUESTION_DICTIONARY = {}
@@ -152,7 +164,7 @@ print("Total number of questions: " + str(question_counter/6))
 print("Total number of predicate questions: " + str(len(QUESTION_DICTIONARY)))
 print("Total number of yes/no answers for predicate set: " + str(yn_predicate_counter))
 
-res = random.sample(range(1,8019), 100)
+res = random.sample(range(1,7907), 100)
 
 for num in res:
     current_id = list(QUESTION_DICTIONARY)[num]
