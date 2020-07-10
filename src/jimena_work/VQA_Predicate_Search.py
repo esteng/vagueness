@@ -4,18 +4,26 @@ import re
 from collections import defaultdict
 import random
 
-with open('/export/a14/jgualla1/v2_OpenEnded_mscoco_train2014_questions.json') as f:
+# Training questions
+#with open('/export/a14/jgualla1/v2_OpenEnded_mscoco_train2014_questions.json') as f:
+    #total_dict = json.load(f)
+# Validation questions
+with open('/export/a14/jgualla1/v2_OpenEnded_mscoco_val2014_questions.json') as f:
     total_dict = json.load(f)
 
+# Training annotations
 #with open('/export/a14/jgualla1/v2_mscoco_train2014_annotations.json') as h:
-#    total_annotation_dict = json.load(h)
-with open('/export/a14/jgualla1/v2_mscoco_train2014_annotations.json') as h:
+    #total_annotation_dict = json.load(h)
+# Validation annotations
+with open('/export/a14/jgualla1/v2_mscoco_val2014_annotations.json') as h:
     total_annotation_dict = json.load(h)
 
+# Dictionary of all annotations (answers)
 ANNOTATIONS_DICT = defaultdict(list)
 yn_annotation_counter = 0
 annotation_counter = 0
 
+# Getting all annotations
 for key in total_annotation_dict:
     dict = total_annotation_dict[key]
     annotation_dict = total_annotation_dict["annotations"]
@@ -32,7 +40,6 @@ for key in total_annotation_dict:
             ANNOTATIONS_DICT[q_id].append(answer["answer"])
             #print(answer["answer"])
             #annotation_counter = annotation_counter + 1 
-        #y = re.search("(([^\w]|)+([yY]es)[^\w])|(([^\w]|)+([nN]o)[^\w])", annotation["multiple_choice_answer"])
         if annotation["answer_type"] == "yes/no":
             yn_annotation_counter = yn_annotation_counter + 1
         answer_list = None
@@ -102,7 +109,11 @@ non_regex_dict = {
     "based on their age": "([bB]ased on their age)",
     "holding anything": "([hH]olding anything)",
     "the same": "([tT]he same)",
-    "what age group": "([wW]hat age group)"
+    "what age group": "([wW]hat age group)",
+    "is it easy to tell": "([iI]s it easy to tell)",
+    "relatively same age": "([rR]elatively same age)",
+    "is this person wearing": "([tT]hat of a child or an adult's)",
+    "what are the": "([wW]hat are the)"
     }
 
 QUESTION_DICTIONARY = {}
@@ -137,14 +148,6 @@ for key in total_dict:
                 break
         if x:
             QUESTION_DICTIONARY[q_id] = {'question': q, 'question_id':q_id, 'question_type': q_type, 'imageId': i_id}
-            #break
-                #if q_type =="yes/no":
-                    #yn_predicate_counter = yn_predicate_counter + 1 
-                #predicate_counter = predicate_counter + 1
-                #limit_counter = limit_counter + 1 
-                #y = re.search("(([^\w]|)+([yY]es)[^\w])|(([^\w]|)+([nN]o)[^\w])", ANNOTATIONS_DICT[q_id])
-            #if ANNOTATIONS_DICT[q_id][0] == "yes/no":
-                #yn_predicate_counter = yn_predicate_counter + 1 
         x = None 
         #if limit_counter == limit:
             #break
@@ -160,13 +163,19 @@ for question in QUESTION_DICTIONARY:
 print("Total number of answer groups (for each answer) for entire dataset: " + str(annotation_counter))
 print("Total number of yes/no answer groups: " + str(yn_annotation_counter))
 print("Total number of questions: " + str(question_counter/6))
-#print(ANNOTATIONS_DICT)
 print("Total number of predicate questions: " + str(len(QUESTION_DICTIONARY)))
 print("Total number of yes/no answers for predicate set: " + str(yn_predicate_counter))
 
-res = random.sample(range(1,7907), 100)
+c = 0
+for question in QUESTION_DICTIONARY:
+    dict = QUESTION_DICTIONARY[question]
+    c = c + 1
+    print(str(c) + ": " + str(dict))
 
-for num in res:
-    current_id = list(QUESTION_DICTIONARY)[num]
-    print(QUESTION_DICTIONARY[current_id])
-    current_id = None 
+
+#res = random.sample(range(1,7907), 100)
+
+#for num in res:
+    #current_id = list(QUESTION_DICTIONARY)[num]
+    #print(QUESTION_DICTIONARY[current_id])
+    #current_id = None 
