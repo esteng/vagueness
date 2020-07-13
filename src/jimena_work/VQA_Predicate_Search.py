@@ -18,6 +18,11 @@ with open('/export/a14/jgualla1/v2_OpenEnded_mscoco_val2014_questions.json') as 
 with open('/export/a14/jgualla1/v2_mscoco_val2014_annotations.json') as h:
     total_annotation_dict = json.load(h)
 
+#ith open('/home/jgualla1/vagueness/src/jimena_work/bad_preds.json',"w") as g:
+    #son.dumps("data", g)
+with open('/home/jgualla1/vagueness/src/jimena_wortk/bad_preds.json') as g:
+    bad_preds_list = json.load(g)
+
 # Dictionary of all annotations (answers)
 ANNOTATIONS_DICT = defaultdict(list)
 yn_annotation_counter = 0
@@ -117,6 +122,7 @@ non_regex_dict = {
     }
 
 QUESTION_DICTIONARY = {}
+#bad_preds_list = bad_preds_dict["questionId"]
 question_counter = 0
 predicate_counter = 0 
 yn_predicate_counter = 0
@@ -144,6 +150,10 @@ for key in total_dict:
             current_non_regex = non_regex_dict[non_regex]
             y = re.search(str(current_non_regex), q)
             if y:
+                x = None
+                break
+        for bad_preds in bad_preds_list:
+            if bad_preds == q_id:
                 x = None
                 break
         if x:
