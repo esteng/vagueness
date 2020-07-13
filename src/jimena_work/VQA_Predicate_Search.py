@@ -20,7 +20,7 @@ with open('/export/a14/jgualla1/v2_mscoco_val2014_annotations.json') as h:
 
 #ith open('/home/jgualla1/vagueness/src/jimena_work/bad_preds.json',"w") as g:
     #son.dumps("data", g)
-with open('/home/jgualla1/vagueness/src/jimena_wortk/bad_preds.json') as g:
+with open('/home/jgualla1/vagueness/src/jimena_work/bad_preds.json') as g:
     bad_preds_list = json.load(g)
 
 # Dictionary of all annotations (answers)
@@ -126,6 +126,7 @@ QUESTION_DICTIONARY = {}
 question_counter = 0
 predicate_counter = 0 
 yn_predicate_counter = 0
+limit = 1000
 
 for key in total_dict:
     dict = total_dict[key]
@@ -138,6 +139,7 @@ for key in total_dict:
         i_id = question["image_id"]
         q_id = question["question_id"]
         q_type = ANNOTATIONS_DICT[q_id][0]
+        q_answers_list = ANNOTATIONS_DICT[q_id][1:]
         for regex in regex_dict:
             current_regex = regex_dict[regex]
             x = re.search(str(current_regex), q)
@@ -157,30 +159,32 @@ for key in total_dict:
                 x = None
                 break
         if x:
-            QUESTION_DICTIONARY[q_id] = {'question': q, 'question_id':q_id, 'question_type': q_type, 'imageId': i_id}
+            QUESTION_DICTIONARY[q_id] = {'question': q, 'question_id':q_id, 'question_type': q_type, 'question_answers': q_answers_list, 'imageId': i_id}
+            limit_counter = limit_counter + 1 
         x = None 
-        #if limit_counter == limit:
-            #break
-    #if limit_counter == limit: 
-       #break
-for question in QUESTION_DICTIONARY:
-    dict = QUESTION_DICTIONARY[question]
-    if dict["question_type"] == "yes/no":
-        yn_predicate_counter = yn_predicate_counter + 1 
+        if limit_counter == limit:
+            break
+    if limit_counter == limit: 
+       break
+
+#for question in QUESTION_DICTIONARY:
+    #dict = QUESTION_DICTIONARY[question]
+    #if dict["question_type"] == "yes/no":
+        #yn_predicate_counter = yn_predicate_counter + 1 
 
 #print(ANNOTATIONS_DICT)
 #print(QUESTION_DICTIONARY)
-print("Total number of answer groups (for each answer) for entire dataset: " + str(annotation_counter))
-print("Total number of yes/no answer groups: " + str(yn_annotation_counter))
-print("Total number of questions: " + str(question_counter/6))
-print("Total number of predicate questions: " + str(len(QUESTION_DICTIONARY)))
-print("Total number of yes/no answers for predicate set: " + str(yn_predicate_counter))
+#print("Total number of answer groups (for each answer) for entire dataset: " + str(annotation_counter))
+#print("Total number of yes/no answer groups: " + str(yn_annotation_counter))
+#print("Total number of questions: " + str(question_counter/6))
+#print("Total number of predicate questions: " + str(len(QUESTION_DICTIONARY)))
+#print("Total number of yes/no answers for predicate set: " + str(yn_predicate_counter))
 
-c = 0
-for question in QUESTION_DICTIONARY:
-    dict = QUESTION_DICTIONARY[question]
-    c = c + 1
-    print(str(c) + ": " + str(dict))
+#c = 0
+#for question in QUESTION_DICTIONARY:
+    #dict = QUESTION_DICTIONARY[question]
+    #c = c + 1
+    #print(str(c) + ": " + str(dict))
 
 
 #res = random.sample(range(1,7907), 100)
@@ -188,4 +192,7 @@ for question in QUESTION_DICTIONARY:
 #for num in res:
     #current_id = list(QUESTION_DICTIONARY)[num]
     #print(QUESTION_DICTIONARY[current_id])
-    #current_id = None 
+    #current_id = None
+
+with open("output.json","w") as f1:
+    json.dump(QUESTION_DICTIONARY, f1)
