@@ -159,7 +159,8 @@ for key in total_dict:
                 x = None
                 break
         if x:
-            QUESTION_DICTIONARY[q_id] = {'question': q, 'question_id':q_id, 'question_type': q_type, 'question_answers': q_answers_list, 'imageId': i_id}
+            QUESTION_DICTIONARY[limit_counter] = {'question': q, 'question_id':q_id, 'question_type': q_type, 'question_answers': q_answers_list, 'imageId': i_id}
+            #print(QUESTION_DICTIONARY[limit_counter])
             limit_counter = limit_counter + 1 
         x = None 
         if limit_counter == limit:
