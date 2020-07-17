@@ -118,7 +118,29 @@ non_regex_dict = {
     "is it easy to tell": "([iI]s it easy to tell)",
     "relatively same age": "([rR]elatively same age)",
     "is this person wearing": "([tT]hat of a child or an adult's)",
-    "what are the": "([wW]hat are the)"
+    "what are the": "([wW]hat are the)",
+    "how old": "([hH]ow old)",
+    "how tall": "([hH]ow tall)",
+    "how high": "([hH]ow high)",
+    "over the age of": "([oO]ver the age of)",
+    "what age": "([wW]hat age)",
+    "high speed train": "([hH]igh speed train)",
+    "new york": "([nN]ew [yY]ork)",
+    "which age": "([wW]hich age)",
+    "what shows": "([wW]hat shows)",
+    "old-fashioned": "([oO]ld-fashioned)",
+    "old fashioned": "([oO]ld fashioned)",
+    "adult's": "([aA]dult's)",
+    "child's": "([cC]hild's)",
+    "years old": "([yY]ears old)",
+    "high-noon": "([hH]igh-noon)",
+    "high noon": "([hH]igh noon)",
+    "was this taken": "([wW]as this taken)",
+    "what brand": "([wW]hat brand)",
+    "how do you know": "([hH]ow do you know)",
+    "high-quality": "([hH]igh-quality)",
+    "high quality": "([hH]igh quality)",
+    "how young": "([hH]ow young)"
     }
 
 QUESTION_DICTIONARY = {}
