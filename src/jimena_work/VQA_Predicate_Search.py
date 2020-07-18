@@ -184,11 +184,13 @@ for key in total_dict:
             QUESTION_DICTIONARY[limit_counter] = {'question': q, 'question_id':q_id, 'question_type': q_type, 'question_answers': q_answers_list, 'imageId': i_id}
             #print(QUESTION_DICTIONARY[limit_counter])
             limit_counter = limit_counter + 1 
+            if ANNOTATIONS_DICT[q_id][0] == "yes/no":
+                yn_predicate_counter = yn_predicate_counter + 1
         x = None 
-        if limit_counter == limit:
-            break
-    if limit_counter == limit: 
-       break
+        #if limit_counter == limit:
+            #break
+    #if limit_counter == limit: 
+       #break
 
 #for question in QUESTION_DICTIONARY:
     #dict = QUESTION_DICTIONARY[question]
@@ -197,11 +199,12 @@ for key in total_dict:
 
 #print(ANNOTATIONS_DICT)
 #print(QUESTION_DICTIONARY)
-#print("Total number of answer groups (for each answer) for entire dataset: " + str(annotation_counter))
-#print("Total number of yes/no answer groups: " + str(yn_annotation_counter))
-#print("Total number of questions: " + str(question_counter/6))
-#print("Total number of predicate questions: " + str(len(QUESTION_DICTIONARY)))
-#print("Total number of yes/no answers for predicate set: " + str(yn_predicate_counter))
+print("Total number of answer groups (for each answer) for entire dataset: " + str(annotation_counter))
+print("Total number of yes/no answer groups: " + str(yn_annotation_counter))
+print("Total number of questions: " + str(question_counter/6))
+print("Total number of predicate questions: " + str(len(QUESTION_DICTIONARY)))
+print("Total number of yes/no answers for predicate set: " + str(yn_predicate_counter))
+
 
 #c = 0
 #for question in QUESTION_DICTIONARY:
@@ -217,5 +220,6 @@ for key in total_dict:
     #print(QUESTION_DICTIONARY[current_id])
     #current_id = None
 
-with open("output.json","w") as f1:
-    json.dump(QUESTION_DICTIONARY, f1)
+#with open("output.json","w") as f1:
+    #json.dump(QUESTION_DICTIONARY, f1)
+
