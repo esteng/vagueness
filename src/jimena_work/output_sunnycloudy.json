@@ -1,0 +1,1 @@
+[{"answer_type": "yes/no", "img_id": "COCO_val2014_000000262274", "label": {"no": 1}, "question_type": "is it", "sent": "Is it cloudy?", "question_id": 262274007}, {"answer_type": "yes/no", "img_id": "COCO_val2014_000000262425", "label": {"no": 1}, "question_type": "is it", "sent": "Is it sunny?", "question_id": 262425000}]
