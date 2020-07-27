@@ -12,10 +12,10 @@ for key in total_question_dict:
     question_dict = total_question_dict[str(order_count)]
 
     question = question_dict['question']
-    x = re.search("([iI]s|[aA]n|[aA])?(([^\w])+([sS]unny)[^\w])", question)
-    y = re.search("([iI]s|[aA]n|[aA])?(([^\w])+([cC]loudy)[^\w])", question)
+    x = re.search("([iI]s|[aA]n|[aA])?(([^\w])+([cC]loudy)[^\w])", question)
+    #y = re.search("([iI]s|[aA]n|[aA])?(([^\w])+([cC]loudy)[^\w])", question)
     
-    if x or y:
+    if x:
 
         answer_type = question_dict['answer_type']
         image_id = question_dict['imageId'] 
@@ -39,7 +39,7 @@ for key in total_question_dict:
         if x:
             for answer in answer_list:
                 w = re.search("([yY]es)", answer)
-                v = re.search("([sS]unny)", answer) 
+                v = re.search("([cC]loudy)", answer) 
                 if w or v:
                     update_answer_list.append(1)
                     anwer_count = answer_count + 1 
@@ -48,15 +48,15 @@ for key in total_question_dict:
 
                 y = None
 
-        if y:
-            for answer in answer_list:
+        #if y:
+            #for answer in answer_list:
                 #w = re.search("((^\w)+([cC]loudy)[^\w])", answer)
-                v = re.search("([nN]o)", answer)
-                if v:
-                    update_answer_list.append(1)
-                    answer_count = answer_count + 1 
-                else:
-                    update_answer_list.append(0) 
+                #v = re.search("([nN]o)", answer)
+                #if v:
+                    #update_answer_list.append(1)
+                    #answer_count = answer_count + 1 
+                #else:
+                    #update_answer_list.append(0) 
 
         w = None
         v = None
@@ -71,8 +71,8 @@ for key in total_question_dict:
 
     order_count = order_count + 1 
     
-    if count == 10:
-        break
+    #if count == 10:
+        #break
 
-with open("output_sunnycloudy_scored.json","w") as f1:
+with open("output_cloudy_scored.json","w") as f1:
         json.dump(dictionary_list, f1)
