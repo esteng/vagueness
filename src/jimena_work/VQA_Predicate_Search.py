@@ -145,7 +145,8 @@ non_regex_dict = {
     "high definition": "([hH]igh definition)",
     "off the ground": "([oO]ff the ground)",
     "low calorie": "([lL]ow calorie)",
-    "new model": "([nN]ew model)"
+    "new model": "([nN]ew model)",
+    "naturally bald": "([nN]aturally bald)"
     }
 
 QUESTION_DICTIONARY = {}
