@@ -141,7 +141,11 @@ non_regex_dict = {
     "how do you know": "([hH]ow do you know)",
     "high-quality": "([hH]igh-quality)",
     "high quality": "([hH]igh quality)",
-    "how young": "([hH]ow young)"
+    "how young": "([hH]ow young)",
+    "high definition": "([hH]igh definition)",
+    "off the ground": "([oO]ff the ground)",
+    "low calorie": "([lL]ow calorie)",
+    "new model": "([nN]ew model)"
     }
 
 QUESTION_DICTIONARY = {}
@@ -225,6 +229,6 @@ for key in total_dict:
     #print(QUESTION_DICTIONARY[current_id])
     #current_id = None
 
-with open("output_1000.json","w") as f1:
+with open("output_1000_yesno.json","w") as f1:
     json.dump(QUESTION_DICTIONARY, f1)
 
