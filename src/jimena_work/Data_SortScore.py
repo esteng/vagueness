@@ -14,7 +14,14 @@ for key in total_question_dict:
     question_dict = total_question_dict[str(order_count)]
 
     question = question_dict['question']
-    x = re.search("([iI]s|[aA]n|[aA])?(([^\w])+([sS]unny)[^\w])", question)
+    x = re.search("([iI]s|[aA]n|[aA])?(([^\w])+([sS]hort)[^\w])", question)
+
+
+
+
+
+
+
     #y = re.search("([iI]s|[aA]n|[aA])?(([^\w])+([cC]loudy)[^\w])", question)
     
     if x:
@@ -40,7 +47,8 @@ for key in total_question_dict:
         
     
         for answer in answer_list:
-            w = re.search("([sS]unny)", answer)
+            w = re.search("([sS]hort)", answer)
+
             v = re.search("([yY]es)", answer) 
             if w or v:
                 update_answer_list.append(1)
@@ -78,5 +86,6 @@ for key in total_question_dict:
 
 #print(count
 #print(dictionary_list)
-with open("output_sunny_scored.json","w") as f1:
+with open("output_short_scored.json","w") as f1:
+
     json.dump(dictionary_list, f1)

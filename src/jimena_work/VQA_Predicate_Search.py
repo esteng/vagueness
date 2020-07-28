@@ -154,7 +154,7 @@ QUESTION_DICTIONARY = {}
 question_counter = 0
 predicate_counter = 0 
 yn_predicate_counter = 0
-limit = 1000
+limit = 2000
 
 for key in total_dict:
     dict = total_dict[key]
@@ -191,7 +191,10 @@ for key in total_dict:
         if x:
             if a_type == "yes/no":
                 QUESTION_DICTIONARY[limit_counter] = {'question': q, 'question_id':q_id, 'question_type': q_type, 'answer_type': a_type, 'question_answers': q_answers_list, 'imageId': i_id}
-
+                print(limit_counter)
+                print(q)
+                print(q_id)
+                print("       ")
             #print(QUESTION_DICTIONARY[limit_counter])
                 limit_counter = limit_counter + 1 
                 #if ANNOTATIONS_DICT[q_id][0] == "yes/no":
@@ -230,6 +233,6 @@ for key in total_dict:
     #print(QUESTION_DICTIONARY[current_id])
     #current_id = None
 
-with open("output_1000_yesno.json","w") as f1:
-    json.dump(QUESTION_DICTIONARY, f1)
+#with open("output_2000_yesno.json","w") as f1:
+    #json.dump(QUESTION_DICTIONARY, f1)
 
