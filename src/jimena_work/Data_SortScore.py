@@ -4,6 +4,8 @@ import re
 with open ('/home/jgualla1/vagueness/src/jimena_work/output_1000_yesno.json') as f:
     total_question_dict = json.load(f)
 
+#print(total_question_dict)
+
 dictionary_list = []
 count = 0
 order_count = 0
@@ -36,17 +38,17 @@ for key in total_question_dict:
         #answer_list_count = 0
         answer_count = 0 
         
-        if x:
-            for answer in answer_list:
-                w = re.search("([sS]unny)", answer)
-                v = re.search("([yY]es)", answer) 
-                if w or v:
-                    update_answer_list.append(1)
-                    answer_count = answer_count + 1 
-                else:
-                    update_answer_list.append(0)
+    
+        for answer in answer_list:
+            w = re.search("([sS]unny)", answer)
+            v = re.search("([yY]es)", answer) 
+            if w or v:
+                update_answer_list.append(1)
+                answer_count = answer_count + 1 
+            else:
+                update_answer_list.append(0)
 
-                y = None
+                #y = None
 
         #if y:
             #for answer in answer_list:
@@ -74,6 +76,7 @@ for key in total_question_dict:
     #if count == 10:
         #break
 
-#print(count)
+#print(count
+#print(dictionary_list)
 with open("output_sunny_scored.json","w") as f1:
-        json.dump(dictionary_list, f1)
+    json.dump(dictionary_list, f1)
