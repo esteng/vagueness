@@ -141,7 +141,12 @@ non_regex_dict = {
     "how do you know": "([hH]ow do you know)",
     "high-quality": "([hH]igh-quality)",
     "high quality": "([hH]igh quality)",
-    "how young": "([hH]ow young)"
+    "how young": "([hH]ow young)",
+    "high definition": "([hH]igh definition)",
+    "off the ground": "([oO]ff the ground)",
+    "low calorie": "([lL]ow calorie)",
+    "new model": "([nN]ew model)",
+    "naturally bald": "([nN]aturally bald)"
     }
 
 QUESTION_DICTIONARY = {}
@@ -164,14 +169,15 @@ for key in total_dict:
         a_type = ANNOTATIONS_DICT[q_id][0]
         q_answers_list = ANNOTATIONS_DICT[q_id][2:]
         q_type = ANNOTATIONS_DICT[q_id][1]
+        #f q_type == "yes/no":
         for regex in regex_dict:
             current_regex = regex_dict[regex]
             x = re.search(str(current_regex), q)
-            #for non_regex in non_regex_dict:
+                #for non_regex in non_regex_dict:
     
             if x:
                 break
-                #print(q)
+                    #print(q)
         for non_regex in non_regex_dict:
             current_non_regex = non_regex_dict[non_regex]
             y = re.search(str(current_non_regex), q)
@@ -183,13 +189,14 @@ for key in total_dict:
                 x = None
                 break
         if x:
-            QUESTION_DICTIONARY[limit_counter] = {'question': q, 'question_id':q_id, 'question_type': q_type, 'answer_type': a_type, 'question_answers': q_answers_list, 'imageId': i_id}
+            if a_type == "yes/no":
+                QUESTION_DICTIONARY[limit_counter] = {'question': q, 'question_id':q_id, 'question_type': q_type, 'answer_type': a_type, 'question_answers': q_answers_list, 'imageId': i_id}
 
             #print(QUESTION_DICTIONARY[limit_counter])
-            limit_counter = limit_counter + 1 
-            if ANNOTATIONS_DICT[q_id][0] == "yes/no":
-                yn_predicate_counter = yn_predicate_counter + 1
-        x = None 
+                limit_counter = limit_counter + 1 
+                #if ANNOTATIONS_DICT[q_id][0] == "yes/no":
+                    #yn_predicate_counter = yn_predicate_counter + 1
+            x = None 
         if limit_counter == limit:
             break
     if limit_counter == limit: 
@@ -223,6 +230,6 @@ for key in total_dict:
     #print(QUESTION_DICTIONARY[current_id])
     #current_id = None
 
-with open("output_1000.json","w") as f1:
+with open("output_1000_yesno.json","w") as f1:
     json.dump(QUESTION_DICTIONARY, f1)
 
