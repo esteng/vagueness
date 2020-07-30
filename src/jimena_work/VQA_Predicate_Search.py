@@ -146,7 +146,82 @@ non_regex_dict = {
     "off the ground": "([oO]ff the ground)",
     "low calorie": "([lL]ow calorie)",
     "new model": "([nN]ew model)",
-    "naturally bald": "([nN]aturally bald)"
+    "naturally bald": "([nN]aturally bald)",
+    "less than":"([lL]ess than)",
+    "of any sort": "([oO]f any sort)",
+    "adult beverage": "([aA]dult beverage)",
+    "any sort of": "([aA]ny sort of)",
+    "high class": "([hH]igh class)",
+    "look happy": "([lL]ook happy)",
+    "high in calories": "([hH]igh in calories)",
+    "high in fiber": "([hH]igh in fiber)",
+    "high in cholesterol": "([hH]igh in cholesterol)",
+    "adult paty": "([aA]dult party)",
+    "adult ride": "([aA]dult ride)",
+    "high rise": "([hH]igh rise)",
+    "high tech": "([hH]igh tech)",
+    "high end": "([hH]igh end)",
+    "low-carb": "([lL]ow-carb)",
+    "as high as": "([aA]s high as)",
+    "a high degree": "([aA] high degree)",
+    "are there many": "([aA]re there many)",
+    "high heel": "([hH]igh heel)",
+    "high chair": "([hH]igh chair)",
+    "to be over age": "([tT]o be over age)",
+    "are all": "([aA]re all)",
+    "low fat": "([lL]ow fat)",
+    "or what": "([oO]r what)",
+    "high calories": "([hH]igh calories)",
+    "is everyone": "([iI]s everyone)",
+    "high pressure": "([hH]igh pressure)",
+    "low tide": "([lL]ow tide)",
+    "are these all": "([aA]re these all)",
+    "need": "([nN]eed)",
+    "more easily": "([mM]ore easily)",
+    "standing tall": "([sS]tanding tall)",
+    "high school": "([hH]igh school)",
+    "adult sized": "([aA]dult sized)",
+    "want": "([wW]ant)",
+    "high calorie": "([hH]igh calories)",
+    "air pollution": "([aA]ir pollution)",
+    "an appropriate age": "([aA]n appropriate age)",
+    "mostly young": "([mM]ostly young)",
+    "low carb": "([lL]ow carb)",
+    "beta carotene": "([bB]eta carotene)",
+    "high calorie": "([hH]igh calorie)",
+    "brave": "([bB]rave)",
+    "high tide": "([hH]igh tide)",
+    "be able to": "([bB]e able to)",
+    "dressed for": "([dD]ressed for)",
+    "worried": "([wW]orried)",
+    "learning": "([lL]earning)",
+    "reached the age of": "([rR]eached the age of)",
+    "standing": "([sS]tanding)",
+    "smiling": "([sS]miling)",
+    "at home": "([aA]t home)",
+    "walking": "([wW]alking])",
+    "busy": "([bB]usy)",
+    "holding": "([hH]olding)",
+    "more than": "([mM]ore than)",
+    "high fiber": "([hH]igh fiber)",
+    "of some sort": "([oO]f some sort)",
+    "is one of": "([iI]s one of)",
+    "can you tell me": "([cC]an yout tell me)",
+    "monitoring": "([mM]onitoring)",
+    "partly cloudy": "([pP]artly cloudy)",
+    "sewing": "([sS]ewing)",
+    "touching": "([tT]ouching)",
+    "playing": "([pP]laying)",
+    "all adult": "([aA]ll adult)",
+    "all young": "([aA]ll young)",
+    "too young": "([tT]oo young)",
+    "to young": "([tT]o young)",
+    "too old": "([tT]oo old)",
+    "to old": "([tT]o old)",
+    "how": "([hH]ow)",
+    "what kind of epxression": "([wW]hat kind of expression)",
+    "male or female": "([mM]ale or female)",
+    "why does": "([wW]hy does)"
     }
 
 QUESTION_DICTIONARY = {}
@@ -154,7 +229,8 @@ QUESTION_DICTIONARY = {}
 question_counter = 0
 predicate_counter = 0 
 yn_predicate_counter = 0
-limit = 2000
+count = 0
+limit = 5000
 
 for key in total_dict:
     dict = total_dict[key]
@@ -188,23 +264,26 @@ for key in total_dict:
             if bad_preds == q_id:
                 x = None
                 break
-        if x:
-            if a_type == "yes/no":
-                QUESTION_DICTIONARY[limit_counter] = {'question': q, 'question_id':q_id, 'question_type': q_type, 'answer_type': a_type, 'question_answers': q_answers_list, 'imageId': i_id}
-                print(limit_counter)
-                print(q)
-                print(q_id)
-                print("       ")
-            #print(QUESTION_DICTIONARY[limit_counter])
-                limit_counter = limit_counter + 1 
-                #if ANNOTATIONS_DICT[q_id][0] == "yes/no":
-                    #yn_predicate_counter = yn_predicate_counter + 1
-            x = None 
-        if limit_counter == limit:
-            break
-    if limit_counter == limit: 
-       break
+        
+        for item in QUESTION_DICTIONARY:
+            dict = QUESTION_DICTIONARY[item]
+            if q_id == dict["question_id"]:
+                x = None
 
+        if x:
+            QUESTION_DICTIONARY[limit_counter] = {'question': q, 'question_id':q_id, 'question_type': q_type, 'answer_type': a_type, 'question_answers': q_answers_list, 'imageId': i_id}
+            #print(limit_counter)
+            #print(q)
+            #print(q_id)
+            #print("       ")
+            x = None
+            limit_counter = limit_counter + 1 
+        #if limit_counter == limit:
+            #break
+    #if limit_counter == limit: 
+       #break
+
+#print(count)
 #for question in QUESTION_DICTIONARY:
     #dict = QUESTION_DICTIONARY[question]
     #if dict["question_type"] == "yes/no":
@@ -233,6 +312,6 @@ for key in total_dict:
     #print(QUESTION_DICTIONARY[current_id])
     #current_id = None
 
-#with open("output_2000_yesno.json","w") as f1:
-    #json.dump(QUESTION_DICTIONARY, f1)
+with open("output_FINAL.json","w") as f1:
+    json.dump(QUESTION_DICTIONARY, f1)
 
