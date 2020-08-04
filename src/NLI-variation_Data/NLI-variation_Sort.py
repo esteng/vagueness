@@ -10,7 +10,7 @@ dict_unsorted = {}
 list_sorted = []
 
 for key in data:
-    sd = statistics.pstdev(key["labels"])
+    sd = statistics.pstdev(key["normed-labels"])
     id = key["id"]
     #print(sd)
     dict = {"standard-deviation": sd, "id": id}
@@ -36,6 +36,6 @@ for item in sort_order:
     dict = {"premise": premise, "hypothesis": hypothesis, "task": task, "original-dataset-label": originaldatasetlabel, "labels": labels, "normed-lables": normedlabels, "standard-deviation": sd}
     list_sorted.append(dict)
 
-with open("output.json","w") as f2:
+with open("output_normed.json","w") as f2:
     json.dump(list_sorted, f2)
 
