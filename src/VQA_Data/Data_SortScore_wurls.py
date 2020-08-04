@@ -15,7 +15,7 @@ for key in total_question_dict:
     question_dict = total_question_dict[str(order_count)]
 
     question = question_dict['question']
-    x = re.search("([iI]s|[aA]n|[aA])?(([^\w])+([oO]ld)[^\w])", question)
+    x = re.search("([iI]s|[aA]n|[aA])?(([^\w])+([yY]oung)[^\w])", question) # HERE
     
     if x:
 
@@ -41,13 +41,12 @@ for key in total_question_dict:
         images_list = total_annotations_dict["images"]
         for image in images_list:
             if image["file_name"] == ( "COCO_val2014_" + str(needed_zeros) + str(image_id) + ".jpg" ):
-                #print(str(needed_zeros) + str(image_id))
                 image_url = image["flickr_url"]
                 break
         
     
         for answer in answer_list:
-            w = re.search("([oO]ld)", answer)
+            w = re.search("([yY]oung)", answer) # HERE
 
             v = re.search("([yY]es)", answer)
             if w or v:
@@ -66,5 +65,5 @@ for key in total_question_dict:
 
     order_count = order_count + 1 
 
-with open("output_new_wurl.json","w") as f1:
+with open("output_young_wurl.json","w") as f1: # HERE
     json.dump(dictionary_list, f1)
