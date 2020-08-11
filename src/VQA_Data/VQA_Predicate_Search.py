@@ -23,6 +23,9 @@ with open('/export/a14/jgualla1/v2_mscoco_val2014_annotations.json') as h:
 with open('/home/jgualla1/vagueness/src/VQA_Data/bad_preds.json') as g:
     bad_preds_list = json.load(g)
 
+with open('/home/jgualla1/vagueness/src/regex_dict.json') as k:
+    regex_dict = json.load(k)
+
 with open('/home/jgualla1/vagueness/src/non_regex_dict.json') as l:
     non_regex_dict = json.load(l)
 
@@ -95,6 +98,7 @@ for key in total_dict:
             if y:
                 x = None
                 break
+
         for bad_preds in bad_preds_list:
             if bad_preds == q_id:
                 x = None
@@ -104,6 +108,9 @@ for key in total_dict:
             dict = QUESTION_DICTIONARY[item]
             if q_id == dict["question_id"]:
                 x = None
+
+        if a_type != "yes/no":
+            x = None
 
         if x:
             QUESTION_DICTIONARY[limit_counter] = {'question': q, 'question_id':q_id, 'question_type': q_type, 'answer_type': a_type, 'question_answers': q_answers_list, 'imageId': i_id}
@@ -147,7 +154,7 @@ for key in total_dict:
     #print(QUESTION_DICTIONARY[current_id])
     #current_id = None
 
-with open("regex_dict.json","w") as f1:
-    json.dump(regex_dict, f1)
+with open("output_FINAL_yesno.json","w") as f1:
+    json.dump(QUESTION_DICTIONARY, f1)
 
 

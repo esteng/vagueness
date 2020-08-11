@@ -15,6 +15,8 @@ QUESTION_DICTIONARY = {}
     
 for key in total_question_dict:
     question_dict = total_questions_dict[key]
+
+    print(question_dict)
     
     question_id = key
     question = question_dict["question"]
@@ -43,10 +45,12 @@ for key in total_question_dict:
 
     if x:
         QUESTION_DICTIONARY[limit_counter] = {'question_id': question_id, 'question': question, 'answer': answer, 'full_answer': full_answer, 'image_id': image_id} 
+    
+
 
     limit_counter = limit_counter + 1 
     if limit_counter == 10:
         break
 
-with open('output_test.json','w') as f1:
-    json.dump(QUESTION_DICTIONARY, f1)
+#with open('output_test.json','w') as f1:
+    #json.dump(QUESTION_DICTIONARY, f1)

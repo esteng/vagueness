@@ -1,7 +1,7 @@
 import json 
 import re
 
-with open ('/home/jgualla1/vagueness/src/VQA_Data/output_FINAL.json') as f:
+with open ('/home/jgualla1/vagueness/src/VQA_Data/output_FINAL_yesno.json') as f:
     total_question_dict = json.load(f)
 
 with open ('/export/a14/jgualla1/annotations/captions_val2014.json') as g:
@@ -15,7 +15,11 @@ for key in total_question_dict:
     question_dict = total_question_dict[str(order_count)]
 
     question = question_dict['question']
-    x = re.search("([iI]s|[aA]n|[aA])?(([^\w])+([yY]oung)[^\w])", question) # HERE
+    x = re.search("([iI]s|[aA]n|[aA])?(([^\w])+([oO]ld)[^\w])", question) # HERE
+
+
+
+
     
     if x:
 
@@ -46,7 +50,7 @@ for key in total_question_dict:
         
     
         for answer in answer_list:
-            w = re.search("([yY]oung)", answer) # HERE
+            w = re.search("([oO]ld)", answer) # HERE
 
             v = re.search("([yY]es)", answer)
             if w or v:
@@ -65,5 +69,6 @@ for key in total_question_dict:
 
     order_count = order_count + 1 
 
-with open("output_young_wurl.json","w") as f1: # HERE
+with open("output_old_wurl_yesno.json","w") as f1: # HERE
+
     json.dump(dictionary_list, f1)
