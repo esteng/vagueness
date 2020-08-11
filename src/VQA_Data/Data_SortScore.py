@@ -1,7 +1,7 @@
 import json 
 import re
 
-with open ('/home/jgualla1/vagueness/src/jimena_work/output_FINAL.json') as f:
+with open ('/home/jgualla1/vagueness/src/VQA_Data/output_FINAL_yesno.json') as f:
     total_question_dict = json.load(f)
 
 dictionary_list = []
@@ -12,7 +12,7 @@ for key in total_question_dict:
     question_dict = total_question_dict[str(order_count)]
 
     question = question_dict['question']
-    x = re.search("([iI]s|[aA]n|[aA])?(([^\w])+([nN]ew)[^\w])", question)
+    x = re.search("([iI]s|[aA]n|[aA])?(([^\w])+([nN]ew)[^\w])", question) # HERE
 
     if x:
 
@@ -38,7 +38,7 @@ for key in total_question_dict:
         
     
         for answer in answer_list:
-            w = re.search("([nN]ew)", answer)
+            w = re.search("([nN]ew)", answer) # HERE
 
             v = re.search("([yY]es)", answer)
             if w or v:
@@ -69,5 +69,5 @@ for key in total_question_dict:
 
     order_count = order_count + 1 
 
-with open("output_new.json","w") as f1:
+with open("output_new_yesno.json","w") as f1: # HERE
     json.dump(dictionary_list, f1)
