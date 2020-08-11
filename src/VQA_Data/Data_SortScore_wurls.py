@@ -16,10 +16,6 @@ for key in total_question_dict:
 
     question = question_dict['question']
     x = re.search("([iI]s|[aA]n|[aA])?(([^\w])+([oO]ld)[^\w])", question) # HERE
-
-
-
-
     
     if x:
 
@@ -51,7 +47,6 @@ for key in total_question_dict:
     
         for answer in answer_list:
             w = re.search("([oO]ld)", answer) # HERE
-
             v = re.search("([yY]es)", answer)
             if w or v:
                 update_answer_list.append(1)
@@ -70,5 +65,4 @@ for key in total_question_dict:
     order_count = order_count + 1 
 
 with open("output_old_wurl_yesno.json","w") as f1: # HERE
-
     json.dump(dictionary_list, f1)

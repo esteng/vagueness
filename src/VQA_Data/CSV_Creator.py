@@ -1,7 +1,9 @@
 import csv
 import json
 
-with open('/home/jgualla1/vagueness/src/VQA_Data/outputs/output_new_wurl.json') as f:
+with open('/home/jgualla1/vagueness/src/VQA_Data/output_old_wurl_yesno.json') as f:
+
+
     predicate_dict = json.load(f)
 
 row_size = 8
@@ -36,7 +38,7 @@ for question in predicate_dict:
 
 csv_format_list_filtered = filter(None, csv_format_list)
 
-with open('output_new_csv.csv','w',newline='') as csvfile:
+with open('output_old_csv_yesno.csv','w',newline='') as csvfile:
     fieldnames = ['question_0','imageurl_0', 'question_1','imageurl_1','question_2','imageurl_2','question_3','imageurl_3','question_4','imageurl_4','question_5','imageurl_5','question_6','imageurl_6','question_7','imageurl_7']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
@@ -46,8 +48,3 @@ with open('output_new_csv.csv','w',newline='') as csvfile:
         if len(item) == row_size * 2:
             #writer.writeheader()
             writer.writerow(item)
-
-#print(csv_format_list)
-
-#print(len(csv_format_list))
-#print(len(predicate_dict))
