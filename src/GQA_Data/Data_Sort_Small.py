@@ -1,10 +1,12 @@
 import json
 import re
+import random
 
 with open('/home/jgualla1/vagueness/src/GQA_Data/output_FINAL.json') as f:
     total_question_dict = json.load(f)
 
-predicate = "overcast"
+predicate = "young"
+slim_to = 75
 
 dictionary_list = []
 count = 0
@@ -28,9 +30,23 @@ for key in total_question_dict:
         current_dict = {'image_id': image_id, "question": question, "question_id": question_id, "answer": answer, "full_answer": full_answer}
         dictionary_list.append(current_dict)
 
+        dictionary_list.append(current_dict)
+
         count = count + 1 
     order_count = order_count + 1 
 
-with open('output_' + predicate + '_yesno_big.json', 'w') as f1:
-    json.dump(dictionary_list, f1)
+dictionary_list_len = len(dictionary_list)
+
+random_num_list = random.sample(range(dictionary_list_len), slim_to)
+
+#for i in range(slim_to):
+    #random_num_list.append(randint(0, dictionary_list_len - 1)
+
+slimmed_dictionary_list = []
+
+for ran_num in random_num_list:
+    slimmed_dictionary_list.append(dictionary_list[ran_num])
+
+with open('output_' + predicate + '_yesno_small.json', 'w') as f1:
+    json.dump(slimmed_dictionary_list, f1)
 
