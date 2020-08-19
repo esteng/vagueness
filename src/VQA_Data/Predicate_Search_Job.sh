@@ -2,7 +2,7 @@
 
 #$ -j yes
 #$ -N predicate_search_job
-#$ -o /home/jgualla1/vagueness/src/VQA_Data/output_old_csv_yesno.csv
+#$ -o /home/jgualla1/vagueness/src/VQA_Data/output_old_wurl_yesno_checked.json
 
 
 
