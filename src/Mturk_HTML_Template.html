@@ -1,0 +1,126 @@
+<!-- Bootstrap v3.0.3 -->
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" />
+<section class="container" id="Other" style="margin-bottom:15px; padding: 10px 10px; font-family: sans-serif, Verdana, Geneva  ; color:#333333; font-size:1.0em;">
+<style type="text/css">table, th, td {
+        border: 1px solid black;
+		        border-collapse: collapse;
+				    }
+    th, td {
+	            padding: 5px;
+			            text-align: left;
+					            table-layout: fixed;
+							            font-size:15px;
+									        }
+
+        .sentence {font-size:16px;}
+
+	    .panel-heading {
+		            background-color: #a7eede !important;
+				            border: 0px solid ;
+						        }
+	        .panel-primary {
+			        border-color: #FFFFFF;
+					        border: 0px solid #FFFFFF;
+							    }
+
+		    .emph{color: #EC407A;}
+
+		        .blue{color: #0000FF;}
+			    .red{color: #FF0000;}
+			        .instr {
+					        font-family: sans-serif, Verdana, Geneva;
+							        font-size: 15px;
+									        line-height: 20px;
+											        width: 88%;
+													    }
+
+
+				   #slidecontainer {
+					       width: 100%; /* Width of the outside container */
+						           }
+				      .slider {
+					              -webkit-appearance: none;  /* Override default CSS styles */
+							              appearance: none;
+									              width: 40%; /* Full-width */
+											              height: 10px; /* Specified height */
+													              background: #b4b4b4; /* Grey background */
+															              outline: none; /* Remove outline */
+																	              opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+																			              -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+																					              transition: opacity .2s;
+																							          }
+				         .slider2 {
+						         -webkit-appearance: none;  /* Override default CSS styles */
+								         appearance: none;
+										         width: 40%; /* Full-width */
+												         height: 10px; /* Specified height */
+														         background: #b4b4b4; /* Grey background */
+																         outline: none; /* Remove outline */
+																		         opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+																				         -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+																						         transition: opacity .2s;
+																								     }
+
+					     /* Mouse-over effects */
+					     .slider:hov" name="range1g" oninput="updateSlider1g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+					     </div>
+					     <div class="checkbox"><label><input name="pg1" type="hidden" value="0" /><input id="pg1" name="pg1" type="checkbox" value="1" />I don't know.</label></div>
+					     <hr />
+
+					     <p class="sentence"><strong>Question #2: ${question_1}</strong></p>
+					     <div><img src="${imageurl_1}" /></div>
+					     &nbsp;
+					     &nbsp;
+					     &nbsp;
+					     <div id="slidecontainer">
+					     <strong class="red">No</strong> <input class="slider" id="slide2g" max="100" min="0" name="range2g" oninput="updateSlider2g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+					     </div>
+					     <div class="checkbox"><label><input name="pg2" type="hidden" value="0" /><input id="pg2" name="pg2" type="checkbox" value="1" />I don't know.</label></div>
+
+					     <hr />
+
+					     <p class="sentence"><strong>Question #3: ${question_2}</strong></p>
+					     <div><img src="${imageurl_2}" /></div>
+					     &nbsp;
+					     &nbsp;
+					     &nbsp;
+					     <div id="slidecontainer">
+					     <strong class="red">No</strong> <input class="slider" id="slide3g" max="100" min="0" name="range3g" oninput="updateSlider3g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+					     </div>
+					     <div class="checkbox"><label><input name="pg3" type="hidden" value="0" /><input id="pg3" name="pg3" type="checkbox" value="1" />I don't know.</label></div>
+
+					     <hr />
+
+					     <p class="sentence"><strong>Question #4: ${question_3}</strong></p>
+					     <div><img src="${imageurl_3}" /></div>
+					     &nbsp;
+					     &nbsp;
+					     &nbsp;
+					     <div id="slidecontainer">
+					     <strong class="red">No</strong> <input class="slider" id="slide4g" max="100" min="0" name="range4g" oninput="updateSlider4g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+					     </div>
+					     <div class="checkbox"><label><input name="pg4" type="hidden" value="0" /><input id="pg4" name="pg4" type="checkbox" value="1" />I don't know.</label></div>
+
+					     <hr />
+
+					     <p class="sentence"><strong>Question #5: ${question_4}</strong></p>
+					     <div><img src="${imageurl_4}" /></div>
+					     &nbsp;
+					     &nbsp;
+					     &nbsp;
+					     <div id="slidecontainer">
+					     <strong class="red">No</strong> <input class="slider" id="slide5g" max="100" min="0" name="range5g" oninput="updateSlider5g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+					     </div>
+					     <div class="checkbox"><label><input name="pg5" type="hidden" value="0" /><input id="pg5" name="pg5" type="checkbox" value="1" />I don't know.</label></div>
+
+					     <hr />
+
+					     <p class="sentence"><strong>Question #6: ${question_5}</strong></p>
+					     <div><img src="${imageurl_5}" /></div>
+					     &nbsp;
+					     &nbsp;
+					     &nbsp;
+					     <div id="slidecontainer">
+					     <strong class="red">No</strong> <input class="slider" id="slide6g" max="100" min="0" name="range6g" oninput="updateSlider6g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+					     </div>
+					     <d
