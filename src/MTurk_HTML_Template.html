@@ -1,5 +1,4 @@
-
-otstrap v3.0.3 -->
+<!-- Bootstrap v3.0.3 -->
 <link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" />
 <section class="container" id="Other" style="margin-bottom:15px; padding: 10px 10px; font-family: sans-serif, Verdana, Geneva  ; color:#333333; font-size:1.0em;">
 <style type="text/css">table, th, td {
@@ -97,15 +96,15 @@ otstrap v3.0.3 -->
 																             background: #ffffff; /* Green background */
 																		             border: 2px solid #0fec00;
 																				             cursor: pointer; /* Cursor on hover */
-							     }
+																						         }
 
-    .slider2::-moz-range-thumb {
-        width: 25px; /* Set a specific slider handle width */
-            height: 25px; /* Slider handle height */
-            background: #ffffff; /* Green background */
-        border: 2px solid #0fec00;
-        cursor: pointer; /* Cursor on hover */
-    }
+							         .slider2::-moz-range-thumb {
+									         width: 25px; /* Set a specific slider handle width */
+											         height: 25px; /* Slider handle height */
+													         background: #ffffff; /* Green background */
+															         border: 2px solid #0fec00;
+																	         cursor: pointer; /* Cursor on hover */
+																			     }
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -171,7 +170,7 @@ otstrap v3.0.3 -->
 										            var c2 = bytes[pos++];
 											              out[c++] = String.fromCharCode((c1 & 31) << 6 | c2 & 63);
 												              } else if (c1 > 239 && c1 < 365) {
-						           // Surrogate Pair
+														                // Surrogate Pair
 														                var c2 = bytes[pos++];
 																          var c3 = bytes[pos++];
 																	            var c4 = bytes[pos++];
@@ -197,21 +196,17 @@ otstrap v3.0.3 -->
 	          $('span.emoji-bytes').each(displayEmoji);
 		      });
     </script>
-
-       
+        
+    
         
     <div class="row col-xs-12 col-md-12">
 	    <div class="panel panel-primary">
-		    <h3 class="panel-heading"><strong><span style="color: #1E1518;">Truth value judgment</span></strong></h3>
+		    <h3 class="panel-heading"><strong><span style="color: #1E1518;">Image Question Answering</span></strong></h3>
 
-		    <p class="instr">Welcome! Thank you for participating in this task. The purpose of this HIT is to determine how vague questions are answered. Please read the instructions carefully.</p>
-		    <p class="instr">You will be presented 8 different questions and their corresponding images.</p>
-		    <p class="instr">You are to score each question on how true it is in relation to the picture.</p>
-		    <p class="instr"> Please ignore any minor errors in the sentences (for example, missspelled words) </p> 
-		    <p class="instr">If you are unable to make a determination, you can check the box marked "I don't know". </p>
-		    <p class="instr">Note that this checkmark should only be used if you really can't tell how false or true the image is. </p>
-
-		    <p class="instr">Please score the sentence between 0 and 100, with zero being totally false and 100 being totally true.</p>
+		    <p class="instr">Welcome! Thank you for participating in this task. Please read the instructions carefully.</p>
+		    <p class="instr">You will be presented with 8 different questions and their corresponding images.</p>
+		    <p class="instr">You are to score how true each question is based on it's image using a slider that ranges from yes (completely true) to no (completely false).</p>
+		    <p class="instr">The box marked "I don't know" should only be used if you really cannot tell what is in the image. </p>
 
 		    <p class="instr">If you have any questions, please send an e-mail to <strong>jgualla1@jh.edu</strong></p>
 
@@ -221,87 +216,71 @@ otstrap v3.0.3 -->
 			    <fieldset>
 				        
 
-				    <p class="sentence"><strong>Sentence #1: ${question_0}</strong></p>
-				    <div><img alt="${imageurl_0}" /></div>
-				    <div align="center" id="slidecontainer">
-					    <strong class="red">False</strong> <input class="slider" id="slide1g" max="100" min="0" name="range1g" oninput="updateSlider1g(this.value);" type="range" value="50" /> <strong class="blue">True&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+				    <p class="sentence"><strong>Question #1: ${question_0}</strong></p>
+				    <div><img src="${imageurl_0}" /></div>
+				    &nbsp;
+				    &nbsp;
+				    &nbsp;
+				    <div id="slidecontainer">
+					    <strong class="red">No</strong> <input class="slider" id="slide1g" max="100" min="0" name="range1g" oninput="updateSlider1g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 				    </div>
 				    <div class="checkbox"><label><input name="pg1" type="hidden" value="0" /><input id="pg1" name="pg1" type="checkbox" value="1" />I don't know.</label></div>
 				    <hr />
 
-				    <p class="sentence"><strong>Sentence #2: ${question_1}</strong></p>
-				    <div><img alt="${imageurl_1}" /></div>
-				    <div align="center" id="slidecontainer">
-					    <strong class="red">False</strong> <input class="slider" id="slide2g" max="100" min="0" name="range2g" oninput="updateSlider2g(this.value);" type="range" value="50" /> <strong class="blue">True&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+				    <p class="sentence"><strong>Question #2: ${question_1}</strong></p>
+				    <div><img src="${imageurl_1}" /></div>
+				    &nbsp;
+				    &nbsp;
+				    &nbsp;
+				    <div id="slidecontainer">
+					    <strong class="red">No</strong> <input class="slider" id="slide2g" max="100" min="0" name="range2g" oninput="updateSlider2g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 				    </div>
 				    <div class="checkbox"><label><input name="pg2" type="hidden" value="0" /><input id="pg2" name="pg2" type="checkbox" value="1" />I don't know.</label></div>
 
 				    <hr />
 
-				    <p class="sentence"><strong>Sentence #3: ${question_2}</strong></p>
-				    <div><img alt="${imageurl_2}" /></div>
-				    <div align="center" id="slidecontainer">
-					    <strong class="red">False</strong> <input class="slider" id="slide3g" max="100" min="0" name="range3g" oninput="updateSlider3g(this.value);" type="range" value="50" /> <strong class="blue">True&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+				    <p class="sentence"><strong>Question #3: ${question_2}</strong></p>
+				    <div><img src="${imageurl_2}" /></div>
+				    &nbsp;
+				    &nbsp;
+				    &nbsp;
+				    <div id="slidecontainer">
+					    <strong class="red">No</strong> <input class="slider" id="slide3g" max="100" min="0" name="range3g" oninput="updateSlider3g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 				    </div>
 				    <div class="checkbox"><label><input name="pg3" type="hidden" value="0" /><input id="pg3" name="pg3" type="checkbox" value="1" />I don't know.</label></div>
 
 				    <hr />
 
-				    <p class="sentence"><strong>Sentence #4: ${question_3}</strong></p>
-				    <div><img alt="${imageurl_3}" /></div>
-				    <div align="center" id="slidecontainer">
-					    <strong class="red">False</strong> <input class="slider" id="slide4g" max="100" min="0" name="range4g" oninput="updateSlider4g(this.value);" type="range" value="50" /> <strong class="blue">True&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+				    <p class="sentence"><strong>Question #4: ${question_3}</strong></p>
+				    <div><img src="${imageurl_3}" /></div>
+				    &nbsp;
+				    &nbsp;
+				    &nbsp;
+				    <div id="slidecontainer">
+					    <strong class="red">No</strong> <input class="slider" id="slide4g" max="100" min="0" name="range4g" oninput="updateSlider4g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 				    </div>
 				    <div class="checkbox"><label><input name="pg4" type="hidden" value="0" /><input id="pg4" name="pg4" type="checkbox" value="1" />I don't know.</label></div>
 
 				    <hr />
 
-				    <p class="sentence"><strong>Sentence #5: ${question_4}</strong></p>
-				    <div><img alt="${imageurl_4}" /></div>
-				    <div align="center" id="slidecontainer">
-					    <strong class="red">False</strong> <input class="slider" id="slide5g" max="100" min="0" name="range5g" oninput="updateSlider5g(this.value);" type="range" value="50" /> <strong class="blue">True&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+				    <p class="sentence"><strong>Question #5: ${question_4}</strong></p>
+				    <div><img src="${imageurl_4}" /></div>
+				    &nbsp;
+				    &nbsp;
+				    &nbsp;
+				    <div id="slidecontainer">
+					    <strong class="red">No</strong> <input class="slider" id="slide5g" max="100" min="0" name="range5g" oninput="updateSlider5g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 				    </div>
 				    <div class="checkbox"><label><input name="pg5" type="hidden" value="0" /><input id="pg5" name="pg5" type="checkbox" value="1" />I don't know.</label></div>
 
 				    <hr />
 
-				    <p class="sentence"><strong>Sentence #6: ${question_5}</strong></p>
-				    <div><img alt="${imageurl_5}" /></div>
-				    <div align="center" id="slidecontainer">
-					    <strong class="red">False</strong> <input class="slider" id="slide6g" max="100" min="0" name="range6g" oninput="updateSlider6g(this.value);" type="range" value="50" /> <strong class="blue">True&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+				    <p class="sentence"><strong>Question #6: ${question_5}</strong></p>
+				    <div><img src="${imageurl_5}" /></div>
+				    &nbsp;
+				    &nbsp;
+				    &nbsp;
+				    <div id="slidecontainer">
+					    <strong class="red">No</strong> <input class="slider" id="slide6g" max="100" min="0" name="range6g" oninput="updateSlider6g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 				    </div>
-				    <div class="checkbox"><label><input name="pg6" type="hidden" value="0" /><input id="pg6" name="pg6" type="checkbox" value="1" />I don't know.</label></div>
-
-				    <hr />
-
-				    <p class="sentence"><strong>Sentence #7: ${question_6}</strong></p>
-				    <div><img alt="${imageurl_6}" /></div>
-				    <div align="center" id="slidecontainer">
-					    <strong class="red">False</strong> <input class="slider" id="slide7g" max="100" min="0" name="range7g" oninput="updateSlider7g(this.value);" type="range" value="50" /> <strong class="blue">True&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
-				    </div>
-				    <div class="checkbox"><label><input name="pg7" type="hidden" value="0" /><input id="pg7" name="pg7" type="checkbox" value="1" />I don't know.</label></div>
-
-				    <hr />
-
-				    <p class="sentence"><strong>Sentence #8: ${question_7}</strong></p>
-				    <div><img alt="${imageurl_7}" /></div>
-				    <div align="center" id="slidecontainer">
-					    <strong class="red">False</strong> <input class="slider" id="slide8g" max="100" min="0" name="range8g" oninput="updateSlider8g(this.value);" type="range" value="50" /> <strong class="blue">True&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
-				    </div>
-				    <div class="checkbox"><label><input name="pg8" type="hidden" value="0" /><input id="pg8" name="pg8" type="checkbox" value="1" />I don't know.</label></div>
-
-				    <hr />
-
-			    </fieldset>
-		    </section>
-	    </div>
-
-</section>
-    </div>
-
-
-
-    </section>
-<style type="text/css">fieldset { padding: 10px; background:#fbfbfb; border-radius:5px; margin-bottom:5px; }
-</style>
-
+				    <div class="checkbox"><l
