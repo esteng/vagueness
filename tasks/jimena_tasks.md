@@ -29,4 +29,5 @@
 - Use the regexs to search over the image captions and questions in order to find examples like what's already in the VQA folder 
 	- the output of this search should have the predicate, the image id, the caption/question string, and the dataset label
 
-	
+Downlaod questions - take out corresponding images. Display questions and images on jupyter notebook. Put opposite images side by side with correspinding questions.
+Run same whole process on development (validation) data set (images, questions, answers). See how many questions come out as yes/no (need at least 100). Statistics on wether less predicate questions (models are doing worse than we think?)
