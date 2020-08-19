@@ -1,10 +1,10 @@
 import json
 import re
 
-with open('/home/jgualla1/vagueness/src/GQA_Data/output_FINAL_yesno.json') as f:
+with open('/home/jgualla1/vagueness/src/GQA_Data/output_FINAL.json') as f:
     total_question_dict = json.load(f)
 
-predicate = "adult"
+predicate = "overcast"
 
 dictionary_list = []
 count = 0
@@ -18,14 +18,14 @@ for key in total_question_dict:
     x = re.search("([iI]s|[aA]n|[aA]])?(([^\w])+(" + predicate + ")[^\w])", question)
 
     if x:
-`
-        answer_type = question_dict['answer_type']
-        image_id = question_dict['imageId']
+
+        #answer_type = question_dict['answer_type']
+        image_id = question_dict['image_id']
         question_id = question_dict['question_id']
         answer = question_dict['answer']
         full_answer = question_dict['full_answer']
 
-        current_dict = {'answer_type': answer_type, 'image_id': image_id, "question": question, "question_id": question_id, "answer": answer, "full_answer": full_answer}
+        current_dict = {'image_id': image_id, "question": question, "question_id": question_id, "answer": answer, "full_answer": full_answer}
         dictionary_list.append(current_dict)
 
         count = count + 1 
