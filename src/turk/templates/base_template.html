@@ -204,11 +204,11 @@
 		    <h3 class="panel-heading"><strong><span style="color: #1E1518;">Image Question Answering</span></strong></h3>
 
 		    <p class="instr">Welcome! Thank you for participating in this task. Please read the instructions carefully.</p>
-		    <p class="instr">You will be presented with 8 different questions and their corresponding images.</p>
-		    <p class="instr">You are to score how true each question is based on it's image using a slider that ranges from yes (completely true) to no (completely false).</p>
-		    <p class="instr">The box marked "I don't know" should only be used if you really cannot tell what is in the image. </p>
-
-		    <p class="instr">If you have any questions, please send an e-mail to <strong>jgualla1@jh.edu</strong></p>
+		    <p class="instr">You will be presented with 8 different yes/no questions and their corresponding images.</p>
+		    <p class="instr">You are to answer each question based on the image paired with it using a slider that ranges from yes to no.</p>
+		    <p class="instr">For example, if the question is "Is it sunny?" and the image is partly sunny and partly cloudy, you can use the slider bar to indicate a value between "yes" (definitely sunny) and "no" (definitely not sunny). </p>
+            <p class="instr">If you have any questions or comments, please use the comment box, or send an e-mail to <strong>textual.choreography@gmail.com</strong></p>
+            <p class="instr">Otherwise, please leave the comment box blank.</strong></p>
 
 
 		    <h3><strong>[Question]</strong></h3>
@@ -224,7 +224,6 @@
 				    <div id="slidecontainer">
 					    <strong class="red">No</strong> <input class="slider" id="slide1g" max="100" min="0" name="range1g" oninput="updateSlider1g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 				    </div>
-				    <div class="checkbox"><label><input name="pg1" type="hidden" value="0" /><input id="pg1" name="pg1" type="checkbox" value="1" />I don't know.</label></div>
 				    <hr />
 
 				    <p class="sentence"><strong>Question #2: ${question_1}</strong></p>
@@ -235,7 +234,6 @@
 				    <div id="slidecontainer">
 					    <strong class="red">No</strong> <input class="slider" id="slide2g" max="100" min="0" name="range2g" oninput="updateSlider2g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 				    </div>
-				    <div class="checkbox"><label><input name="pg2" type="hidden" value="0" /><input id="pg2" name="pg2" type="checkbox" value="1" />I don't know.</label></div>
 
 				    <hr />
 
@@ -247,7 +245,6 @@
 				    <div id="slidecontainer">
 					    <strong class="red">No</strong> <input class="slider" id="slide3g" max="100" min="0" name="range3g" oninput="updateSlider3g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 				    </div>
-				    <div class="checkbox"><label><input name="pg3" type="hidden" value="0" /><input id="pg3" name="pg3" type="checkbox" value="1" />I don't know.</label></div>
 
 				    <hr />
 
@@ -259,7 +256,6 @@
 				    <div id="slidecontainer">
 					    <strong class="red">No</strong> <input class="slider" id="slide4g" max="100" min="0" name="range4g" oninput="updateSlider4g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 				    </div>
-				    <div class="checkbox"><label><input name="pg4" type="hidden" value="0" /><input id="pg4" name="pg4" type="checkbox" value="1" />I don't know.</label></div>
 
 				    <hr />
 
@@ -271,7 +267,6 @@
 				    <div id="slidecontainer">
 					    <strong class="red">No</strong> <input class="slider" id="slide5g" max="100" min="0" name="range5g" oninput="updateSlider5g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 				    </div>
-				    <div class="checkbox"><label><input name="pg5" type="hidden" value="0" /><input id="pg5" name="pg5" type="checkbox" value="1" />I don't know.</label></div>
 
 				    <hr />
 
@@ -283,7 +278,6 @@
 				    <div id="slidecontainer">
 					    <strong class="red">No</strong> <input class="slider" id="slide6g" max="100" min="0" name="range6g" oninput="updateSlider6g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 				    </div>
-				    <div class="checkbox"><label><input name="pg6" type="hidden" value="0" /><input id="pg6" name="pg6" type="checkbox" value="1" />I don't know.</label></div>
 
 				    <hr />
 
@@ -295,7 +289,6 @@
 				    <div id="slidecontainer">
 					    <strong class="red">No</strong> <input class="slider" id="slide7g" max="100" min="0" name="range7g" oninput="updateSlider7g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 				    </div>
-				    <div class="checkbox"><label><input name="pg7" type="hidden" value="0" /><input id="pg7" name="pg7" type="checkbox" value="1" />I don't know.</label></div>
 
 				    <hr />
 
@@ -307,13 +300,14 @@
 				    <div id="slidecontainer">
 					    <strong class="red">No</strong> <input class="slider" id="slide8g" max="100" min="0" name="range8g" oninput="updateSlider8g(this.value);" type="range" value="50" /> <strong class="blue">Yes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 				    </div>
-				    <div class="checkbox"><label><input name="pg8" type="hidden" value="0" /><input id="pg8" name="pg8" type="checkbox" value="1" />I don't know.</label></div>
 
 				    <hr />
 
 			    </fieldset>
 		    </section>
 	    </div>
+	    <div class="form-group"><label for="comments">Comments:</label> <input class="form-control" id="comments" name="comments" placeholder="" required="" type="text" /></div>
+
 
 </section>
     </div>
