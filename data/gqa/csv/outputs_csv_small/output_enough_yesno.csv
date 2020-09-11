@@ -1,5 +1,5 @@
 Traceback (most recent call last):
-  File "/home/jgualla1/vagueness/src/GQA_Data/CSV_Creator.py", line 7, in <module>
+  File "/home/jgualla1/vagueness/src/gqa/CSV_Creator.py", line 7, in <module>
     predicate_dict = json.load(f)
   File "/home/jgualla1/anaconda3/lib/python3.7/json/__init__.py", line 296, in load
     parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)

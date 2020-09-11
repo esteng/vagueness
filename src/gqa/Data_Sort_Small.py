@@ -2,10 +2,10 @@ import json
 import re
 import random
 
-with open('/home/jgualla1/vagueness/src/GQA_Data/output_FINAL.json') as f:
+with open('/home/jgualla1/vagueness/data/gqa/json/output_FINAL.json') as f:
     total_question_dict = json.load(f)
 
-predicate = "adult"
+predicate = "young"
 slim_to = 64
 
 dictionary_list = []
@@ -47,6 +47,6 @@ slimmed_dictionary_list = []
 for ran_num in random_num_list:
     slimmed_dictionary_list.append(dictionary_list[ran_num])
 
-with open('output_' + predicate + '_yesno_small_correct.json', 'w') as f1:
+with open('output_' + predicate + '_yesno_small.json', 'w') as f1:
     json.dump(slimmed_dictionary_list, f1)
 
