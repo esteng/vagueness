@@ -18,7 +18,7 @@ for question in predicate_dict:
     current_dict = {}
     csv_format_list.append(current_dict)
     csv_format_list[row_counter]['question_' + str(count)] = question['question']
-    csv_format_list[row_counter]['imageurl_' + str(count)] = ('ugrad.cs.jhu.edu/~jgualla1/images/' + str(question['image_id']) + '.jpg')
+    csv_format_list[row_counter]['imageurl_' + str(count)] = ('http://ugrad.cs.jhu.edu/~jgualla1/images/' + str(question['image_id']) + '.jpg')
     csv_format_list[row_counter]['question_id_' + str(count)] = question['question_id']
 
     question_count = question_count + 1
