@@ -3,7 +3,7 @@ import json
 
 predicate = 'young'
 
-with open ('/home/jgualla1/vagueness/src/gqa/output_' + predicate + '_yesno_small.json') as f:
+with open ('/home/jgualla1/vagueness/data/gqa/json/outputs_json_small/output_' + predicate + '_yesno_small.json') as f:
     predicate_dict = json.load(f)
 
 row_size = 8

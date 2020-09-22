@@ -7,5 +7,5 @@
 #$ -m ae -M jgualla1@jh.edu
 #$ -cwd
 
-python /home/jgualla1/vagueness/src/gqa/CSV_Creator.py
+python /home/jgualla1/vagueness/src/gqa/csv_creator.py
 
