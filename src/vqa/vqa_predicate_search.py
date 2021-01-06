@@ -5,22 +5,22 @@ from collections import defaultdict
 import random
 
 # Training questions
-with open('/export/b14/jgualla1/v2_OpenEnded_mscoco_train2014_questions.json') as f:
-    total_dict = json.load(f)
-# Validation questions
-#with open('/export/b14/jgualla1/v2_OpenEnded_mscoco_val2014_questions.json') as f:
+#with open('/export/a14/jgualla1/v2_OpenEnded_mscoco_train2014_questions.json') as f:
     #total_dict = json.load(f)
+# Validation questions
+with open('/export/a14/jgualla1/v2_OpenEnded_mscoco_val2014_questions.json') as f:
+    total_dict = json.load(f)
 
 # Training annotations
-with open('/export/b14/jgualla1/v2_mscoco_train2014_annotations.json') as h:
-    total_annotation_dict = json.load(h)
-# Validation annotations
-#with open('/export/b14/jgualla1/v2_mscoco_val2014_annotations.json') as h:
+#with open('/export/a14/jgualla1/v2_mscoco_train2014_annotations.json') as h:
     #total_annotation_dict = json.load(h)
+# Validation annotations
+with open('/export/a14/jgualla1/v2_mscoco_val2014_annotations.json') as h:
+    total_annotation_dict = json.load(h)
 
 #ith open('/home/jgualla1/vagueness/src/jimena_work/bad_preds.json',"w") as g:
     #son.dumps("data", g)
-with open('/home/jgualla1/vagueness/data/vqa/json/bad_preds.json') as g:
+with open('/home/jgualla1/vagueness/src/VQA_Data/bad_preds.json') as g:
     bad_preds_list = json.load(g)
 
 with open('/home/jgualla1/vagueness/src/regex_dict.json') as k:
@@ -55,7 +55,6 @@ for key in total_annotation_dict:
         if annotation["answer_type"] == "yes/no":
             yn_annotation_counter = yn_annotation_counter + 1
         answer_list = None
-        #print (ANNOTATIONS_DICT[q_id])
         #if annotation_counter == 10:
             #break
     #if annotation_counter == 10:
@@ -79,7 +78,6 @@ for key in total_dict:
     for question in question_dict:
         question_counter = question_counter + 1
         q = question["question"]
-        #print (q)
         i_id = question["image_id"]
         q_id = question["question_id"]
         a_type = ANNOTATIONS_DICT[q_id][0]
@@ -121,10 +119,7 @@ for key in total_dict:
             #print(q_id)
             #print("       ")
             x = None
-            print(QUESTION_DICTIONARY[limit_counter])
-            limit_counter = limit_counter + 1
-
-        #print(QUESTION_DICTIONARY[limit_counter])
+            limit_counter = limit_counter + 1 
         #if limit_counter == limit:
             #break
     #if limit_counter == limit: 
@@ -159,7 +154,7 @@ for key in total_dict:
     #print(QUESTION_DICTIONARY[current_id])
     #current_id = None
 
-with open("vague_questions.json","w") as f1:
+with open("output_FINAL_yesno.json","w") as f1:
     json.dump(QUESTION_DICTIONARY, f1)
 
 
