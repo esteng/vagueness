@@ -10,14 +10,20 @@ def parse_csv(path):
         reader = csv.DictReader(f1)
         for line in reader: 
             for i in range(1,9):
-                res_dict = {"worker_id": line["WorkerId"],
-                            "assignment_id": line["AssignmentId"],
-                            "p_true":  float(line[f"Answer.range{i}g"]),
-                            "sent": line[f"Input.question_{i-1}"],
-                            "start_time": line[f"AcceptTime"],
-                            "end_time": line[f"SubmitTime"]}
-                res_lines.append(res_dict)
-
+                try:
+                    res_dict = {"worker_id": line["WorkerId"],
+                                "assignment_id": line["AssignmentId"],
+                                "question_id": line[f"Input.question_id_{i-1}"], 
+                                "p_true":  float(line[f"Answer.range{i}g"]),
+                                "sent": line[f"Input.question_{i-1}"] + "-" + line[f"Input.imageurl_{i-1}"],
+                                "start_time": line[f"AcceptTime"],
+                                "end_time": line[f"SubmitTime"]}
+                    res_lines.append(res_dict)
+                except KeyError:
+                    # already parsed 
+                    assert("worker_id" in line)
+                    line["p_true"] = float(line["p_true"])
+                    res_lines.append(line) 
     return res_lines 
 
 def get_annotators(responses):
@@ -46,7 +52,16 @@ def normalize(responses):
             score = line['p_true']
             norm_score = mm_norm(score)
             line["p_true_norm"] = norm_score
-            assert(norm_score >= 0 and norm_score <= 1)
+            try:
+                assert(norm_score >= 0 and norm_score <= 1)
+            except AssertionError:
+                continue
+                #print(norm_score)
+                #print(f"norm score is {norm_score}") 
+                #print(score)
+                #print(mm_norm) 
+                #sys.exit()
+
             responses[i] = line 
 
     return responses
@@ -130,15 +145,7 @@ def get_accuracy(res_lines, exclude, do_normalize):
 
     res_lines = get_decision_one_annotator(res_lines, use_ridit = do_normalize)
     res_lines = vote(res_lines, bad_annotators)
-    data_summary(res_lines)
-    # only one per sent 
-    # consolidate votes
-    #lines_by_sent =  {line['sent']: (line['voted_decision'], line['label']) for line in res_lines}
-    #for sent, (dec, lab) in lines_by_sent.items():
-    #    if dec == lab:
-    #        total_true += 1
-    #return 0
-    #return total_true/len(lines_by_sent)
+    return data_summary(res_lines)
 
 def data_summary(lines):
     anns = get_annotators(lines)
@@ -149,9 +156,6 @@ def data_summary(lines):
         res = {"correct_true": 0, "incorrect_true": 0, "correct_false":0,
                 "incorrect_false":0, "no_move": 0, "dont_know": 0}
         for line in responses_by_annotator:
-        #    
-        #    if line['dont_know'] == '0|1':
-        #        res['dont_know'] += 1
             if line['voted_decision'] == 'True' and line['p_true'] > 50.0:
                 res['correct_true'] += 1
             elif line['voted_decision'] == "True" and line['p_true'] < 50.0: 
@@ -170,13 +174,37 @@ def data_summary(lines):
     print(anns_by_acc)
     print(f"macro avg: {np.mean([x[1] for x in anns_by_acc])}")
     #print(",".join([x[0] for x in anns_by_acc if x[1] < 0.501]))
+    return anns_by_acc
 
+def filter_data(res_lines, anns_by_acc, output_path, do_normalize): 
+    if do_normalize:
+        res_lines = normalize(res_lines)
+    # get annotators with low accuracy 
+    exclude = []
+    for ann, acc in anns_by_acc:
+        if acc < 0.75:
+            # add them to exclusion list 
+            exclude.append(ann)
+    # exclude exclusion list 
+    new_rows = [row for row in res_lines if row["worker_id"] not in exclude]
+    with open(output_path, "w") as f1:
+        fieldnames = [k for k in new_rows[0].keys() if not k.startswith("decision")]
+        writer = csv.DictWriter(f1, fieldnames = fieldnames)
+        writer.writeheader() 
+        for row in new_rows:
+            writer.writerow({k:v for (k,v) in row.items() if k in fieldnames} ) 
 
 
 def main(args):
     parsed_csv_lines = parse_csv(args.csv)
-    accuracy = get_accuracy(parsed_csv_lines, args.exclude, args.normalize)
-    print(f"Accuracy: {accuracy}")
+    anns_by_acc = get_accuracy(parsed_csv_lines, args.exclude, args.normalize)
+
+    if args.produce_csv is not None: 
+        filtered = filter_data(parsed_csv_lines, 
+                               anns_by_acc, 
+                               args.produce_csv, 
+                               args.normalize) 
+        print(f"filtered csv written to {args.produce_csv}") 
 
 
 if __name__ == "__main__":
@@ -184,5 +212,6 @@ if __name__ == "__main__":
     parser.add_argument("--csv", help = "path to MT results", required = True)
     parser.add_argument("--exclude", action="store_true", required = False, help = "set to exclude unreliable annotators (in bad.csv)")
     parser.add_argument("--normalize", action="store_true", required = False, help = "set to normalize data" ) 
+    parser.add_argument("--produce-csv", help = "path to produce a filtered csv with normalied scores and no bad annotators", required=False) 
     args = parser.parse_args()
     main(args)
